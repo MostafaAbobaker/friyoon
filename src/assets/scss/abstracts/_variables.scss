@@ -1,0 +1,154 @@
+
+$fs-main: 16px;
+$fs-sm: $fs-main * .875;
+$fs-lg: $fs-main * 1.25;
+$rows:1;
+$columns: 12;
+$gap: 1.5rem;
+
+//  Padding
+
+$padding-x: 1rem;
+$padding-y: .5rem;
+$padding: $padding-y $padding-x;
+
+$padding-sm-x: $padding-x*.75;
+$padding-sm-y: $padding-y*.75;
+$padding-sm: $padding-sm-y $padding-sm-x;
+
+$padding-lg-x: $padding-x*1.25;
+$padding-lg-y: $padding-y*1.25;
+$padding-lg: $padding-lg-y $padding-lg-x;
+
+
+
+
+
+//  Radius
+
+$radius: .4rem;
+$radius-sm: $radius*.75;
+$radius-lg: $radius*1.25;
+$radius-pill: 50rem;
+
+//  shadow
+
+$box-shadow: 0 0 15px 0 rgb(var(--black-rgb-color)/ 6%);
+$box-shadow-l: 0px 10px 34px -15px rgb(var(--black-rgb-color)/ 24%);
+$btn-shadow: 0 2px 6px 0 rgb(var(--black-rgb-color)/ 6%);
+$focus-shadow: 0 0 0 4px rgb(var(--primary-rgb-color)/ 20%);
+
+//
+
+
+
+$transition-3s: all .3s ease-in-out;
+:root {
+    --fs-main:16px;
+    --rows: 1;
+    --columns: #{$columns};
+    --gap: #{$gap};
+    --radius: #{$radius};
+    --radius-sm: #{$radius-sm};
+    --radius-lg: #{$radius-lg};
+    --radius-pill: #{$radius-pill};
+    --box-shadow: #{$box-shadow};
+
+    @media (max-width:var(--lg)){--s-24: 1.25rem;}
+    @media (max-width:var(--md)){--s-24: 1rem;}
+
+}
+// Theme Configuration
+$themes: (
+  "light": (
+    "primary": #2fab99,
+    "secondary": #00a8c6 ,//#00a8c6 #00b2e3
+    "success": #0acf97,
+    "danger": #d44e5e,
+    "warning": #ffbc00,
+    "info": #39afd1,
+    "light": #f8f9fa,
+    "dark": #212529,
+    "white": #fff,
+    "black": #000,
+    "white-blue": #bdcdd9,
+    "white-blue-rgb": 189 205 217,
+    "primary-rgb": 47 171 153,
+    "secondary-rgb": 0 178 227,
+    "success-rgb": 10 207 151,
+    "danger-rgb": 212 78 94,
+    "warning-rgb": 255 188 0,
+    "info-rgb": 57 175 209,
+    "light-rgb": 235 239 244,
+    "dark-rgb": 108 117 125,
+    "white-rgb": 255 255 255,
+    "black-rgb": 0 0 0,
+    "gray-10": #fafbfe,
+    "gray-15": #f1f5f9,
+    "gray-20": #e0e3e5,
+    "gray-25": #dee2e6,
+    "gray-30": #98a6ad,
+    "gray-50": #6c757d,
+    "gray-70": #304542,
+    "gray-90": #212529,
+  ),
+  "dark": (
+    "primary": #2fab99,
+    "secondary": #00b2e3,
+    "success": #0acf97,
+    "danger": #d44e5e,
+    "warning": #ffbc00,
+    "info": #39afd1,
+
+    "light": #212529,
+    "dark": #f8f9fa,
+    "white": #000,
+    "black": #fff,
+    "white-blue": #313a46,
+    "white-blue-rgb": 49 58 70,
+
+    "primary-rgb": 47 171 153,
+    "secondary-rgb": 0 178 227,
+    "success-rgb": 10 207 151,
+    "danger-rgb": 212 78 94,
+    "warning-rgb": 255 188 0,
+    "info-rgb": 57 175 209,
+    "light-rgb":108 117 125,
+    "dark-rgb": 235 239 244,
+    "white-rgb": 0 0 0,
+    "black-rgb": 255 255 255,
+    "gray-10": #212529,
+    "gray-15": #27272a,
+    "gray-20": #304542,
+    "gray-25": #495057,
+    "gray-30": #6c757d,
+    "gray-50": #98a6ad,
+    "gray-70": #e0e3e5,
+    "gray-90": #fafbfe,
+  )
+);
+
+// List of theme colors that need variants and special classes
+$theme-colors: ("primary", "secondary", "success", "danger", "warning", "info", "light", "dark");
+
+
+
+$breakpoints: (
+  sm: 575px,
+  md: 767px,
+  lg: 991px,
+  xl: 1199px,
+  xxl: 1399px,
+  xxxl: 1599px,
+);
+
+
+$values: (
+  0: 0,
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 1rem,
+  4: 1.5rem,
+  5: 3rem
+);
+

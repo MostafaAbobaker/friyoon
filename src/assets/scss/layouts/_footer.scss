@@ -1,0 +1,94 @@
+@use '../abstracts' as *;
+
+
+footer.footer {
+  // background: linear-gradient(164deg, #535353 12%, #808080 100%);
+  background: linear-gradient(164deg, var(--gray-50-color) 12%, var(--gray-30-color) 100%);
+  color: var(--white-color);
+  padding: var(--s-60) 0 var(--s-40);
+  h5 {
+    font-size: var(--s-20);
+    font-weight: 700;
+    margin-bottom: var(--s-20);
+    color: var(--white-color);
+    padding-bottom: rem(10);
+    border-bottom: 1px solid var(--gray-30-color);
+    & ~ p {
+      text-wrap: balance;
+      line-height: 1.6;
+    }
+  }
+  ul.services-list {
+    display: grid;
+    gap: var(--s-10);
+    li {
+      padding-inline-start: rem(16);
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        // color: var(--primary-color);
+        transform: translateX(-16px);
+        a {
+          // color: var(--primary-color-darker);
+          &::before {
+            // color: var(--primary-color-darker);
+          }
+        }
+
+      }
+      a {
+        line-height: 1.5;
+        color: var(--white-color);
+        transition: all 0.3s ease-in-out;
+        font-weight: 700;
+        font-size: rem(14);
+        position: relative;
+        display: block;
+        &::before {
+          content: '\f100';
+          position: absolute;
+          inset-inline-start: rem(-20);
+          top: 70%;
+          transform: translateY(-50%);
+          color: var(--white-color);
+          font-family: 'Font Awesome 6 Free';
+          font-weight: 900;
+          font-size: rem(10);
+          transition: all 0.3s ease-in-out;
+
+        }
+      }
+
+    }
+  }
+  ul.social-media {
+    display: flex;
+    justify-content: space-evenly;
+    li {
+      a {
+        display: grid;
+        place-items: center;
+        color: var(--white-color);
+        font-size: rem(20);
+        transition: all 0.3s ease-in-out;
+        width: rem(40);
+        height: rem(40);
+        border-radius: $radius-pill;
+        background-color: var(--primary-color);
+        &:hover {
+          transform: translateY(-5px);
+        }
+      }
+    }
+
+  }
+}
+footer.copy-right {
+  background-color: var(--gray-70-color);
+  color: var(--white-color);
+  padding: rem(16);
+  p {
+    text-align: center;
+    margin-bottom: 0;
+  }
+}

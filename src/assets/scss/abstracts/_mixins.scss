@@ -1,0 +1,104 @@
+@use 'sass:map';
+@use "variables" as *;
+
+/* !************************* Start Media Query View Screen ********************************/
+
+/* Result For Example
+  .text {
+    @include mqMin(lg) {
+      color: #f00;
+    }
+    @include mqMax(lg) {
+      background-color: #f0f;
+    }
+}
+*/
+
+// media query
+
+@mixin mqMin($key) {
+  $size: map.get($breakpoints, $key);
+
+  @if ($size) {
+
+    @media (width > $size) {
+      @content;
+    }
+  } @else {
+    @error '`#{$key}` does not exist in the $breakpoints';
+  }
+}
+@mixin mqMax($key) {
+  $size: map.get($breakpoints, $key);
+
+  @if ($size) {
+    @media (width < $size) {
+      @content;
+    }
+  } @else {
+    @error '`#{$key}` does not exist in the $breakpoints';
+  }
+}
+
+/* !************************* End Media Query View Screen ********************************/
+
+
+@mixin flexCenter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flexCenter-x {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin photoBgCover {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin photoResponsive {
+  width: 100%;
+  object-fit: cover;
+}
+
+@mixin textOverflow {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin font-icon {
+  font-family: 'iconfont';
+  background-image: none;
+  line-height: 1;
+  font-weight: normal;
+}
+
+// Animation Duration
+
+@mixin duration{
+  animation-duration: .8s;
+  transition-duration: .8s;
+  animation-fill-mode: both;
+}
+
+@mixin flexbox($direction, $justify, $align, $wrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+@mixin flexbox-x($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}

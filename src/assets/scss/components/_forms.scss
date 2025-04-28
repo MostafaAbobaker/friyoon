@@ -1,0 +1,141 @@
+@use '../abstracts' as *;
+
+.form-control,
+.form-select,
+.form-control-info {
+  font-size: $fs-main;
+  padding: $padding;
+  border-radius: $radius;
+}
+
+.form-control-sm,
+.form-select-sm {
+  font-size: $fs-sm;
+  padding: $padding-sm;
+  border-radius: $radius-sm;
+}
+
+.form-control-lg,
+.form-select-lg {
+  font-size: $fs-lg;
+  padding: $padding-lg;
+  border-radius: $radius-lg;
+}
+
+.form-control {
+  &:focus {
+    box-shadow: $focus-shadow;
+    border-color: rgb(var(--primary-rgb-color) / 50%);
+  }
+}
+
+.form-select {
+  padding-inline-end: calc($padding-x + 1.25rem);
+
+  &:focus {
+    box-shadow: $focus-shadow;
+    border-color: rgb(var(--primary-rgb-color) / 50%);
+  }
+}
+
+.form-check-input {
+  &:checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+
+  &:focus {
+    box-shadow: $focus-shadow;
+  }
+}
+
+.form-control.ng-invalid {
+  padding-inline-start: $padding-x;
+  padding-inline-end: calc($padding-x + 1.25rem);
+}
+
+.invalid-feedback {
+  background-color: var(--danger-color);
+  color: var(--white-color);
+  border-radius: $radius-sm;
+  padding: rem(2) rem(10);
+  text-align: center;
+  font-size: var(--s-14);
+}
+
+.input-add-list {
+  font-size: $fs-main;
+
+  .list-group {
+    max-height: rem(117);
+    overflow: auto;
+  }
+
+  .list-group-item {
+    padding: $padding;
+    color: var(--gray-50-color);
+  }
+
+  .btn {
+    color: var(--gray-50-color);
+    padding: 0;
+    line-height: 100%;
+    margin-top: rem(-4);
+
+    &:hover,
+    &:focus {
+      color: var(--gray-70-color);
+    }
+  }
+
+  i[class*=" fi-rr-"]::before {
+    margin-inline-end: 0;
+    margin-inline-start: 0;
+  }
+}
+
+.form-control-info {
+  color: var(--gray-50-color);
+  border: 1px solid var(--gray-20-color);
+}
+
+// Form Floating
+.form-floating {
+  font-size: var(--s-14);
+
+  >label {
+    padding-inline-start: $padding-x;
+    padding-inline-end: $padding-x;
+  }
+
+  >.form-control,
+  >.form-control-plaintext {
+    padding-inline-start: $padding-x;
+    padding-inline-end: $padding-x;
+  }
+}
+
+.form-label {
+  color: var(--gray-50-color);
+}
+
+.form-text {
+  color: var(--gray-50-color);
+}
+
+.form-number {
+  width: rem(100);
+}
+
+.verify-input {
+  .form-control {
+    font-weight: 700;
+    font-size: var(--s-20);
+    text-align: center;
+    letter-spacing: rem(20);
+
+    &:focus::placeholder {
+      color: var(--gray-30-color);
+    }
+  }
+}

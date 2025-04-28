@@ -1,0 +1,85 @@
+@use '../abstracts' as *;
+
+.btn-link,
+.nav-link {
+  color: var(--primary-color);
+
+  &:is(:hover, :focus, :active, :active:focus) {
+    color: var(--gray-50-color);
+  }
+}
+
+
+
+.btn {
+  font-size: $fs-main;
+  padding: $padding;
+  border-radius: $radius;
+}
+
+.btn-sm {
+  font-size: $fs-sm;
+  padding: $padding-sm;
+  border-radius: $radius-sm;
+}
+
+.btn-lg {
+  font-size: $fs-lg;
+  padding: $padding-lg;
+  border-radius: $radius-lg;
+}
+
+/***** Btn Hover *****/
+
+.btn,
+.nav-tabs .nav-link,
+.page-link,
+.dropdown-item {
+  overflow-y: clip;
+  transform: perspective(1px) translateZ(0);
+
+  @-moz-document url-prefix() {
+    overflow: clip;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: rgb(var(--white-rgb-color)/20%);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition-property: transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out;
+  }
+
+  &:hover:before,
+  &:focus:before,
+  &:active:before {
+    transform-origin: left;
+    transform: scaleX(1);
+  }
+}
+
+// tooltip
+
+.custom-tooltip {
+  --bs-tooltip-bg: var(--primary-color);
+  --bs-tooltip-color: var(--white-color);
+}
+
+// theme btn
+
+html[data-bs-theme="dark"] {
+  .theme-toggle {
+    .icon-moon-stars::before {
+      content: "\e903";
+    }
+
+    .fi-rr-moon-stars::before {
+      content: "\f249";
+    }
+  }
+}

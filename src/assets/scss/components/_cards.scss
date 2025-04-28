@@ -1,0 +1,16 @@
+@use '../abstracts' as *;
+
+.card {
+  border-radius: $radius;
+  border-color: var(--gray-20-color);
+
+  .list-group-flush {
+    >.list-group-item {
+      border-color: var(--gray-20-color);
+
+      &:nth-of-type(2n) {
+        background-color: rgb(var(--gray-30-color)/ 2.5%);
+      }
+    }
+  }
+}

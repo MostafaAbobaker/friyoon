@@ -1,0 +1,38 @@
+ [data-bs-theme="dark"] {
+  aside#sidebar.sidebar {
+    color: var(--black-color) !important;
+    ul {
+      li {
+        a ,.dropdown-btn , .sub-menu a , a .icon {
+          color: var(--gray-70-color) !important;
+        }
+        a  {
+          &.active {
+            color: var(--black-color) !important;
+
+            &::before {
+              background-color: var(--black-color);
+            }
+            .icon {
+              color: var(--black-color) !important;
+            }
+          }
+        }
+        &:has(.active) {
+
+          .dropdown-btn {
+            color: var(--black-color) !important;
+
+            &::before {
+              background-color: var(--black-color);
+            }
+            .icon {
+              color: var(--black-color) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,99 @@
+@use '../abstracts' as *;
+
+.input-date {
+  width: 100%;
+  display: block;
+
+  .p-datepicker {
+    width: 100%;
+    display: block;
+
+    .p-inputtext {
+      flex: 1 1 100%;
+      width: 100%;
+      display: inline-block;
+    }
+
+    .p-datepicker-day {
+      color: var(--gray-90-color);
+      &:not(.p-datepicker-day-selected):not(.p-disabled):hover {
+        background: rgb(var(--primary-rgb-color) / 20%);
+        color: var(--gray-90-color);
+      }
+    }
+
+
+    .p-button-text {
+      color: var(--primary-color);
+      &:not(:disabled):hover  {
+        background: rgb(var(--primary-rgb-color) / 10%);
+        color: var(--primary-color);
+
+      }
+    }
+    .p-datepicker-year,
+    .p-datepicker-month {
+      color: var(--gray-90-color);
+      &:not(.p-disabled):not(.p-datepicker-month-selected):not(.p-datepicker-year-selected):hover {
+        background-color: var(--gray-20-color);
+        color: var(--gray-90-color);
+      }
+
+    }
+
+
+
+    .p-datepicker-day-selected-range {
+      background: rgb(var(--primary-rgb-color) / 20%) !important;
+      color: var(--primary-color) !important;
+    }
+
+    .p-datepicker-panel {
+      width: auto;
+      background: var(--white-color);
+      color: var(--gray-90-color);
+      border: 1px solid var(--gray-25-color);
+      box-shadow: 0 4px 6px -1px rgb(var(--black-rgb-color)/10%),
+                  0 2px 4px -2px rgb(var(--black-rgb-color)/10%);
+    }
+
+
+
+    .p-datepicker-header {
+      background: var(--white-color);
+      color: var(--gray-90-color);
+      border-bottom: 1px solid var(--gray-25-color);
+    }
+
+    .p-datepicker-select-year,
+    .p-datepicker-select-month ,
+    .p-datepicker-weekday {
+      color: var(--gray-90-color);
+      &:enabled:hover {
+        background: var(--gray-20-color);
+        color: var(--gray-90-color);
+      }
+    }
+
+    .p-datepicker-today>.p-datepicker-day {
+      background: var(--gray-20-color);
+      color: var(--gray-90-color);
+
+    }
+    .p-datepicker-day-selected,
+    .p-datepicker-year-selected,
+    .p-datepicker-month-selected {
+      background: var(--primary-color) !important;
+      color: var(--white-color) !important;
+    }
+    .p-datepicker-calendar-container .p-datepicker-calendar:first-child {
+      border-inline-start: none
+    }
+    .p-datepicker-calendar-container .p-datepicker-calendar {
+      border-inline-start: 1px solid var(--gray-25-color);
+    }
+
+
+
+  }
+}

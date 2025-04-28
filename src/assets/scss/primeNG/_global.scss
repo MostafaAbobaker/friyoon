@@ -1,0 +1,310 @@
+@use '../abstracts' as *;
+
+%input {
+  width: 100%;
+  // flex:  0 0 100%;
+  // position: relative;
+  font-size: rem(16) ;
+  color: var(--gray-90-color);
+  background-color: var(--white-color);
+  border: 1px solid var(--gray-25-color);
+  border-radius: $radius;
+  box-shadow: 0 0 rgb(var(--block-rgb-color)/ 0),0 0 rgb(var(--block-rgb-color)/ 0),0 1px 2px 0 rgb(var(--dark-rgb-color)/ 5%);
+  transition: all 0.3s ease-in-out;
+      &:enabled:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgb(var(--primary-rgb-color) / 20%);
+
+      }
+      &:enabled:hover {
+        border-color: var(--primary-color);
+      }
+}
+/* Input  */
+body .p-inputtext , body .form-control{
+  @extend %input;
+  padding: var(--s-6) var(--s-12);
+  padding-block: var(--s-6);
+  padding-inline: var(--s-12);
+  display: block;
+  line-height: 1.5;
+  &.p-inputtext-sm,&.form-control-sm {
+    padding: var(--s-4) var(--s-8);
+    padding-block: var(--s-4);
+    padding-inline: var(--s-8);
+  }
+  &.p-inputtext-lg,&.form-control-lg {
+    padding: var(--s-8) var(--s-16);
+    padding-block: var(--s-8);
+    padding-inline: var(--s-16);
+  }
+}
+body .p-inputtext , body .form-control{
+  @extend %input;
+  padding: var(--s-6) var(--s-12);
+  padding-block: var(--s-6);
+  padding-inline: var(--s-12);
+  display: block;
+  line-height: 1.5;
+
+}
+/* Input Float Label */
+body .p-floatlabel , body .form-floating {
+  position: relative;
+  display: block;
+  label {
+    --bs-border-width: 1px;
+    transform: translateY(0);
+    position: absolute;
+    top: 0;
+    inset-inline-start: 0;
+    z-index: 2;
+    max-width: 100%;
+    height: 100%;
+    padding-top: 0;
+    padding-block: var(--s-16);
+    padding-inline: var(--s-12);
+    font-size: rem(16);
+    font-weight: 400;
+    overflow: hidden;
+    color: rgba(var(--dark-rgb-color)/ 65%);
+    line-height: 1.5;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    border: var(--bs-border-width) solid transparent;
+    transform-origin: 0 0;
+    // transition: opacity .1s ease-in-out, transform .1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  .p-inputtext ,  .form-control ,  input {
+    --bs-border-width: 1px;
+    padding-block: var(--s-16);
+    padding-inline: var(--s-12);
+    height: calc(3.5rem + calc(var(--bs-border-width) * 2));
+    min-height: calc(3.5rem + calc(var(--bs-border-width) * 2));
+    line-height: 1.25;
+    @extend %input;
+    &:focus  {
+      & ~ label {
+        top: 0;
+        color: rgba(var(--dark-rgb-color)/ 65%);
+        transform: scale(.85) translateY(-.5rem) translateX(.15rem);
+      }
+    }
+  }
+  &:has(input:focus),
+  &:has(input.p-filled),
+  &:has(input:-webkit-autofill),
+  &:has(textarea:focus),
+  &:has(.p-inputwrapper-focus),
+  &:has(.p-inputwrapper-filled) {
+    label {
+      top: 0;
+      color: rgba(var(--dark-rgb-color)/ 65%);
+      transform: scale(.85) translateY(-.5rem) translateX(.15rem);
+    }
+  }
+
+
+
+
+}
+
+/* Select */
+body .p-multiselect , body .form-select {
+  --bs-form-select-bg-img: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20width%3D%22512%22%20height%3D%22512%22%3E%3Cg%20id%3D%22_01_align_center%22%20data-name%3D%2201%20align%20center%22%3E%3Cpath%20d%3D%22M22.586%2C5.929l-9.879%2C9.879a1.021%2C1.021%2C0%2C0%2C1-1.414%2C0L1.42%2C5.934.006%2C7.348l9.873%2C9.874a3.075%2C3.075%2C0%2C0%2C0%2C4.243%2C0L24%2C7.343Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E%0A);
+  background-size: rem(16);
+
+  @extend %input;
+
+  .p-multiselect-dropdown {
+    background-image: var(--bs-form-select-bg-img);
+    background-repeat: no-repeat;
+    background-position: right .75rem center;
+    background-size: rem(16);
+
+    svg {
+
+      display: none;
+    }
+  }
+  &:not(.p-disabled):hover {
+    border-color: var(--primary-color);
+  }
+  &:not(.p-disabled).p-focus {
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--primary-color),transparent 80%);
+  border-color: var(--primary-color);
+
+  }
+  .p-multiselect-overlay {
+    background: var(--white-color);
+    color: var(--gray-90-color);
+    border: 1px solid var(--gray-20-color);
+    border-radius: $radius;
+    box-shadow: 0 2px 12px 0 color-mix(in srgb, var(--block-color),transparent 10%) ;
+  }
+  .p-multiselect-option {
+    font-weight: normal;
+    color: var(--gray-90-color);
+    border-radius: $radius;
+
+  }
+
+  .p-multiselect-option:not(.p-multiselect-option-selected):not(.p-disabled).p-focus {
+    background: var(--gray-15-color);
+    color: var(--gray-90-color);
+  }
+  .p-multiselect-label {
+    color: var(--gray-90-color);
+  }
+  .p-chip {
+    background-color: var(--gray-15-color);
+    color: var(--gray-90-color);
+  }
+  .p-chip-remove-icon {
+    color: var(--gray-90-color);
+  }
+}
+
+/* Input Check Box */
+body .p-checkbox , body .form-check ,body .p-radiobutton {
+  .p-checkbox-box , .form-check-input  {
+    transition: all 0.3s ease-in-out;
+    border-radius: $radius-sm !important;
+    border: 1px solid var(--gray-25-color);
+    background-color: var(--white-color);
+    width: rem(24);
+    min-width: rem(24);
+    height: rem(24);
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      border-color: var(--primary-color);
+    }
+    &:focus {
+      box-shadow: 0 0 0 4px rgb(var(--primary-rgb-color)/ 20%)  ;
+    }
+    &:checked {
+      --bs-form-check-bg-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%22512%22%0A%20%20height%3D%22512%22%20x%3D%220%22%20y%3D%220%22%20viewBox%3D%220%200%20507.506%20507.506%22%20style%3D%22enable-background%3Anew%200%200%20512%20512%22%20xml%3Aspace%3D%22preserve%22%0A%20%20class%3D%22%22%3E%0A%20%20%3Cg%3E%0A%20%20%20%20%3Cpath%0A%20%20%20%20%20%20d%3D%22M163.865%20436.934a54.228%2054.228%200%200%201-38.4-15.915L9.369%20304.966c-12.492-12.496-12.492-32.752%200-45.248%2012.496-12.492%2032.752-12.492%2045.248%200l109.248%20109.248L452.889%2079.942c12.496-12.492%2032.752-12.492%2045.248%200%2012.492%2012.496%2012.492%2032.752%200%2045.248L202.265%20421.019a54.228%2054.228%200%200%201-38.4%2015.915z%22%0A%20%20%20%20%20%20fill%3D%22%23ffffff%22%20opacity%3D%221%22%20data-original%3D%22%23000000%22%20class%3D%22%22%3E%3C%2Fpath%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E);
+      // --bs-form-check-bg-image: url(../../img/checkWhite.png);
+      background-color: var(--primary-color);
+      background-size: 70%;
+    }
+    &[type=radio]   {
+      border-radius: 50% !important;
+      background-color: var(--white-color);
+      &:checked {
+        --bs-form-check-bg-image:url(data:image/svg+xml,%3Csvg%20id%3D%22Layer_1%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23fff%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20data-name%3D%22Layer%201%22%3E%3Cellipse%20cx%3D%2212%22%20cy%3D%2212%22%20rx%3D%222.925%22%20ry%3D%222.914%22%2F%3E%3C%2Fsvg%3E%0A);
+      background-size: 200%;
+      background-color: var(--primary-color);
+      }
+    }
+  }
+  .p-radiobutton-box {
+    border-radius: 50% !important;
+    background-color: var(--white-color);
+    border-color: var(--gray-25-color);
+    background-position: center center;
+    --bs-form-check-bg-image:url(data:image/svg+xml,%3Csvg%20id%3D%22Layer_1%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23fff%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20data-name%3D%22Layer%201%22%3E%3Cellipse%20cx%3D%2212%22%20cy%3D%2212%22%20rx%3D%222.925%22%20ry%3D%222.914%22%2F%3E%3C%2Fsvg%3E%0A);
+    background-size: 200%;
+    background-repeat: no-repeat;
+    transition: all 0.2s ease-in-out;
+
+  }
+  &.p-radiobutton-checked {
+    .p-radiobutton-box {
+      background-image: var(--bs-form-check-bg-image);
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      background-position: center center;
+      .p-radiobutton-icon {
+        display: none;
+      }
+    }
+    &:not(.p-disabled):has(.p-radiobutton-input:hover) {
+      .p-radiobutton-box  {
+        background-position: center center;
+        background-image: var(--bs-form-check-bg-image);
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        background-size: 200%;
+      }
+    }
+    &:not(.p-disabled):has(.p-radiobutton-input:focus) {
+      .p-radiobutton-box  {
+        box-shadow: 0 0 0 4px rgb(var(--primary-rgb-color)/ 20%)  ;
+
+      }
+    }
+    /* &:not(.p-disabled):has(.p-radiobutton-input:hover) {
+      .p-radiobutton-box {
+        background-image: var(--bs-form-check-bg-image);
+
+        border-color: var(--primary-color);;
+        background: var(--primary-color);
+      }
+    } */
+  }
+
+  /* .p-radiobutton-checked .p-radiobutton-box .p-radiobutton-icon {
+    background: var(--p-radiobutton-icon-checked-color);
+    transform: translateZ(0) scale(1, 1);
+    visibility: visible;
+} */
+
+  &:not(.p-disabled):has(.p-radiobutton-input:hover)  {
+    .p-radiobutton-box {
+
+      border-color: var(--primary-color);
+    }
+}
+  .p-checkbox-input {
+    position: absolute;
+  }
+  &:not(.p-disabled):has(.p-checkbox-input:hover) {
+    .p-checkbox-box , .form-check-input {
+      border-color: var(--primary-color);
+    }
+  }
+  &:not(.p-disabled):has(.p-checkbox-input:focus) {
+    .p-checkbox-box , .form-check-input {
+      box-shadow: 0 0 0 4px rgb(var(--primary-rgb-color)/ 20%)  ;
+
+    }
+  }
+  &.p-checkbox-checked .p-checkbox-icon  {
+    display: none;
+  }
+
+  &.p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:hover)  {
+    .p-checkbox-box {
+
+      background: var(--white-color);
+      border-color: var(--gray-25-color);
+    }
+  }
+  &.p-checkbox-checked:not(.p-disabled):has(.p-checkbox-input:checked)  {
+    .p-iconwrapper {
+      background-color: var(--primary-color);
+      --bs-form-check-bg-image: url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%22512%22%0A%20%20height%3D%22512%22%20x%3D%220%22%20y%3D%220%22%20viewBox%3D%220%200%20507.506%20507.506%22%20style%3D%22enable-background%3Anew%200%200%20512%20512%22%20xml%3Aspace%3D%22preserve%22%0A%20%20class%3D%22%22%3E%0A%20%20%3Cg%3E%0A%20%20%20%20%3Cpath%0A%20%20%20%20%20%20d%3D%22M163.865%20436.934a54.228%2054.228%200%200%201-38.4-15.915L9.369%20304.966c-12.492-12.496-12.492-32.752%200-45.248%2012.496-12.492%2032.752-12.492%2045.248%200l109.248%20109.248L452.889%2079.942c12.496-12.492%2032.752-12.492%2045.248%200%2012.492%2012.496%2012.492%2032.752%200%2045.248L202.265%20421.019a54.228%2054.228%200%200%201-38.4%2015.915z%22%0A%20%20%20%20%20%20fill%3D%22%23ffffff%22%20opacity%3D%221%22%20data-original%3D%22%23000000%22%20class%3D%22%22%3E%3C%2Fpath%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E);
+      background-image: var(--bs-form-check-bg-image);
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: 70%;
+      width: 100%;
+      height: 100%;
+      border-radius: $radius-sm;
+    }
+  }
+}
+
+/* select Float Label */
+body .p-floatlabel {
+  .p-multiselect-label-container {
+    padding-top: rem(26);
+  }
+  .p-multiselect-label {
+    padding-block: rem(4.8);
+  }
+}

@@ -1,0 +1,38 @@
+<section class="testimonials-component">
+  <div class="container">
+    <!-- <div class="icon-sub-title"> <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 382.000000 382.000000" preserveAspectRatio="xMidYMid meet"> <defs> <linearGradient id="sub-icon1" x1="0%" y1="0%" x2="0%" y2="100%"> <stop offset="0%" style="stop-color:#0431b8;stop-opacity:1"></stop> <stop offset="100%" style="stop-color:#007cfb;stop-opacity:1"></stop> </linearGradient> </defs> <g fill="url(#sub-icon1)" transform="translate(0.000000,382.000000) scale(0.100000,-0.100000)" stroke="none"><path d="M1856 3797 c-20 -20 -23 -36 -29 -142 -50 -901 -761 -1612 -1662 -1662 -106 -6 -122 -9 -142 -29 -30 -30 -30 -78 0 -108 20 -20 36 -23 142 -29 901 -50 1612 -761 1662 -1662 6 -106 9 -122 29 -142 30 -30 78 -30 108 0 20 20 23 36 29 142 50 901 761 1612 1662 1662 106 6 122 9 142 29 30 30 30 78 0 108 -20 20 -36 23 -142 29 -901 50 -1612 761 -1662 1662 -6 106 -9 122 -29 142 -14 14 -35 23 -54 23 -19 0 -40 -9 -54 -23z"></path></g> </svg> <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 382.000000 382.000000" preserveAspectRatio="xMidYMid meet"> <defs> <linearGradient id="sub-icon2" x1="0%" y1="0%" x2="0%" y2="100%"> <stop offset="0%" style="stop-color:#0431b8;stop-opacity:1"></stop> <stop offset="100%" style="stop-color:#007cfb;stop-opacity:1"></stop> </linearGradient> </defs> <g fill="url(#sub-icon2)" transform="translate(0.000000,382.000000) scale(0.100000,-0.100000)" stroke="none"><path d="M1856 3797 c-20 -20 -23 -36 -29 -142 -50 -901 -761 -1612 -1662 -1662 -106 -6 -122 -9 -142 -29 -30 -30 -30 -78 0 -108 20 -20 36 -23 142 -29 901 -50 1612 -761 1662 -1662 6 -106 9 -122 29 -142 30 -30 78 -30 108 0 20 20 23 36 29 142 50 901 761 1612 1662 1662 106 6 122 9 142 29 30 30 30 78 0 108 -20 20 -36 23 -142 29 -901 50 -1612 761 -1662 1662 -6 106 -9 122 -29 142 -14 14 -35 23 -54 23 -19 0 -40 -9 -54 -23z"></path></g> </svg> <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 382.000000 382.000000" preserveAspectRatio="xMidYMid meet"> <defs> <linearGradient id="sub-icon3" x1="0%" y1="0%" x2="0%" y2="100%"> <stop offset="0%" style="stop-color:#0431b8;stop-opacity:1"></stop> <stop offset="100%" style="stop-color:#007cfb;stop-opacity:1"></stop> </linearGradient> </defs> <g fill="url(#sub-icon3)" transform="translate(0.000000,382.000000) scale(0.100000,-0.100000)" stroke="none"><path d="M1856 3797 c-20 -20 -23 -36 -29 -142 -50 -901 -761 -1612 -1662 -1662 -106 -6 -122 -9 -142 -29 -30 -30 -30 -78 0 -108 20 -20 36 -23 142 -29 901 -50 1612 -761 1662 -1662 6 -106 9 -122 29 -142 30 -30 78 -30 108 0 20 20 23 36 29 142 50 901 761 1612 1662 1662 106 6 122 9 142 29 30 30 30 78 0 108 -20 20 -36 23 -142 29 -901 50 -1612 761 -1662 1662 -6 106 -9 122 -29 142 -14 14 -35 23 -54 23 -19 0 -40 -9 -54 -23z"></path></g> </svg></div> -->
+
+    <h5 >آراء عملائنا</h5>
+    <h2 >ماذا يقول عملاؤنا عنا؟</h2>
+    <p >نحن نؤمن بأن رضا العملاء هو أساس نجاحنا. إليك بعض آراء عملائنا الكرام الذين جربوا خدماتنا.</p>
+    <div class="row g-4">
+      @for(item of testimonials; track item.name; let i = $index) {
+        <div class="col-xl-4 col-lg-6 col-md-6 column">
+          <div class="testimonials-item">
+
+            <div class="testimonials-item-body">
+              <p>فريون من افضل الشركات اللي تعاملت معهم, يسوون كل شئ بسرعة عالية و جودة ممتازة و بسعر معقول.
+              </p>
+              <!-- <p>{{item.feedback}}</p> -->
+              <div class="stars">
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+
+                <i class="fi fi-ss-star"></i>
+                <i class="fi fi-ss-star"></i>
+                </div>
+            </div>
+            <div class="profile">
+                            <h5 class="name fw-bold"> {{item.name}}</h5>
+                <div class="image">
+                  <img src="../../../../assets/img/user-pic.jpg" alt="{{item.name}}" class="img-fluid">
+                </div>
+            </div>
+
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

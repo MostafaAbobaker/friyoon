@@ -1,0 +1,234 @@
+@use 'sass:color';
+@use 'sass:map';
+@use 'sass:list';
+
+@use "variables" as *;
+
+/* !************************* Start  Convert PX To REM *******************************************/
+
+@function rem($px-value) {
+	@return (calc($px-value / 16)) + rem;
+}
+
+/* !************************* End  Convert PX To REM *******************************************/
+
+
+/* !************************* Start Size for padding and margin and font size ******************/
+
+/* Result
+  :root {
+    --size-8: .5rem; //  ==> 8px;
+    --lg: 1200px;
+  }
+*/
+:root {
+    // Size for padding and margin and font size
+    @for $i from 0 through 150 {
+      @if $i % 2 == 0 { // Only include even numbers
+        --s-#{$i}: #{calc($i / 16)}rem; // Convert #{$i}px to rem
+      }
+    }
+    // Media Query Screen Size
+    @each $size, $value in $breakpoints {
+      --#{$size}: #{$value};
+    }
+  }
+/* !************************* End Size for padding and margin and font size ******************/
+
+/* !************************* Start Generate Class for Gap size from 0 to 5 ******************/
+@each $key, $value in $values {
+  .gap-#{$key} {
+    gap: $value;
+  }
+}
+
+
+
+  /* !************************* End Generate Class for Gap size from 0 to 5 ******************/
+
+  /* !************************* Start Generate Class for line-clamp size from 0 to 10 ******************/
+
+@for $i from 1 through 10 {
+    .line-clamp-#{$i}{
+      display: -webkit-box;
+      -webkit-line-clamp: #{$i};
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+  /* !************************* End Generate Class for line-clamp size from 0 to 10 ******************/
+
+
+  /* !************************* Start Generate Class for truncate-string size from 0 to 10 ******************/
+
+  @for $i from 1 through 10 {
+    .truncate-string-#{$i}{
+      width: 100%;
+      max-width:  #{$i * 50}px; ;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  /* !************************* End Generate Class for truncate-string size from 0 to 10 ******************/
+
+  /* !************************* Start Generate Class for Animation Delay size from 0 to 10 ******************/
+
+@for $i from 1 through 10 {
+    .delay-#{$i}{
+        animation-delay: #{calc($i / 8)}s;
+    }
+  }
+  /* !************************* End Generate Class for Animation Delay size from 0 to 10 ******************/
+
+  /* !************************* Start Generate Grid System By Display Grid ********************************/
+
+// Grid Column Utilities
+@mixin generate-column-classes($prefix: null) {
+    $class-prefix: if($prefix, 'g-col-#{$prefix}-', 'g-col-');
+
+    @for $i from 1 through $columns {
+      .#{$class-prefix}#{$i} {
+        grid-column: auto / span #{$i};
+      }
+
+      // Optional: Add column start classes
+      .#{$class-prefix}start-#{$i} {
+        grid-column-start: #{$i};
+      }
+
+      // Optional: Add column end classes
+      .#{$class-prefix}end-#{$i + 1} {
+        grid-column-end: #{$i + 1};
+      }
+      .#{$class-prefix}rows-#{$i} {
+        @if($i < 10) {
+          --columns: #{$i + 1};
+        } @else  {
+          --columns: #{$i + 2};
+        }
+        grid-template-columns: repeat(auto-fit, minmax(calc(100%  / var( --columns) ), 12fr));
+      }
+    }
+
+    // Full width column
+    .#{$class-prefix}full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  // Generate base column classes
+  @include generate-column-classes;
+
+  // Generate responsive column classes
+  @each $size, $value in $breakpoints {
+    @media (min-width: $value) {
+      @include generate-column-classes($size);
+    }
+  }
+
+  // Additional Grid Utilities
+  .grid-rows-auto {
+    grid-template-rows: auto;
+  }
+
+  .grid-flow-row {
+    grid-auto-flow: row;
+  }
+
+  .grid-flow-col {
+    grid-auto-flow: column;
+  }
+
+  /* !************************* End Generate Grid System By Display Grid ********************************/
+
+
+
+  /* !************************* Start Generate Theme Color And Button ********************************/
+
+
+
+// Mixin to generate CSS variables for a theme
+@mixin generate-theme-vars($theme-name, $properties) {
+    // Define all CSS variables
+    @each $name, $property in $properties {
+      --#{$name}-color: #{$property};
+    }
+
+    // Generate variants and classes for theme colors
+    @each $name in $theme-colors {
+      $property: map.get($properties, $name);
+
+      --#{$name}-color-dark: #{color.adjust($property, $lightness: -10%)};
+      --#{$name}-color-darker: #{color.adjust($property, $lightness: -25%)};
+      --#{$name}-color-light: #{color.adjust($property, $lightness: 5%)};
+      --#{$name}-color-lighten: #{color.adjust($property, $lightness: 45%)};
+
+
+    }
+  }
+
+
+  // Mixin to generate button styles
+  @mixin generate-button-styles() {
+    @each $name in $theme-colors {
+      .text-#{$name} {
+        color: var(--#{$name}-color) !important;
+      }
+
+      .border-#{$name} {
+        border-color: var(--#{$name}-color) !important;
+      }
+
+      .bg-#{$name} {
+        background-color: var(--#{$name}-color) !important;
+      }
+
+      .btn-#{$name} {
+        --opacity: 25%;
+        background-color: var(--#{$name}-color);
+        border-color: var(--#{$name}-color);
+        box-shadow: 0 2px 6px 0 rgb(var(--black-rgb-color)/ var(--opacity));
+
+        &:is(:hover, :focus, :active, :active:focus) {
+          background-color: color-mix(in srgb, var(--#{$name}-color), black 5%);
+          border-color: color-mix(in srgb, var(--#{$name}-color), black 5%);
+        }
+      }
+
+      .btn-outline-#{$name} {
+        --opacity: 25%;
+        border-color: var(--#{$name}-color);
+        color: var(--#{$name}-color);
+        box-shadow: 0 2px 6px 0 rgb(var(--black-rgb-color)/ var(--opacity));
+
+        &:is(:hover, :focus, :active, :active:focus) {
+          background-color: color-mix(in srgb, var(--#{$name}-color), black 5%);
+          border-color: color-mix(in srgb, var(--#{$name}-color), black 5%);
+          color: var(--white-color);
+        }
+      }
+    }
+  }
+
+
+  // Generate themes
+@each $theme-name, $properties in $themes {
+    @if $theme-name == "light" {
+      // Light theme is also the default (root) theme
+      :root ,[data-bs-theme="#{$theme-name}"] {
+        @include generate-theme-vars($theme-name, $properties);
+      }
+    } @else {
+      // Other themes
+      [data-bs-theme="#{$theme-name}"] {
+        @include generate-theme-vars($theme-name, $properties);
+      }
+    }
+  }
+
+  // Generate themes for button styles
+
+  @include generate-button-styles();
+
+  /* !************************* End Generate Theme Color And Button ********************************/

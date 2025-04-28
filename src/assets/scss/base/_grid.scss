@@ -1,0 +1,17 @@
+
+
+.grid {
+  --rows: var(--rows);
+  --columns: var(--columns);
+  --gap:var(--gap) ;
+
+  display: grid;
+  grid-template-rows: repeat(var(--rows,1),1fr);
+  grid-template-columns: repeat(var(--bs-columns, 12), 1fr);
+  // grid-template-columns: repeat(auto-fill, minmax(0, 1fr));
+
+
+  gap: var(--bs-gap,1.5rem);
+
+
+}

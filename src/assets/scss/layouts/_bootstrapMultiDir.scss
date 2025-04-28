@@ -1,0 +1,221 @@
+@use '../abstracts' as *;
+
+
+/* !************************* Start Generate Class for padding and Margin from 0 to 5 ******************/
+@mixin generate-paddingAndMargin-classes($prefix: null) {
+  $class-prefix: if($prefix, '-#{$prefix}', '');
+
+  .ms#{$class-prefix}-auto {
+    margin-left: unset !important;
+    margin-inline-start: auto !important;
+  }
+
+  .me#{$class-prefix}-auto {
+    margin-right: unset !important;
+    margin-inline-end: auto !important;
+  }
+
+  .text#{$class-prefix}-end {
+    text-align: end !important;
+  }
+
+  .text#{$class-prefix}-start {
+    text-align: start !important;
+  }
+
+  @each $key, $value in $values {
+
+    .ms#{$class-prefix}-#{$key}{
+      margin-left: unset !important;
+      margin-inline-start: $value !important;
+    }
+    .me#{$class-prefix}-#{$key}{
+      margin-right: unset !important;
+      margin-inline-end: $value !important;
+    }
+    .ps#{$class-prefix}-#{$key}{
+      padding-left: unset !important;
+      padding-inline-start: $value !important;
+    }
+    .pe#{$class-prefix}-#{$key}{
+      padding-right: unset !important;
+      padding-inline-end: $value !important;
+    }
+  }
+
+
+}
+
+@include generate-paddingAndMargin-classes();
+
+// Generate responsive column classes
+@each $size, $value in $breakpoints {
+  @media (min-width: $value) {
+    @include generate-paddingAndMargin-classes($size);
+  }
+}
+
+/* !************************* End Generate Class for padding and Margin from 0 to 5  ******************/
+
+
+
+
+
+// Navbar
+
+.navbar-brand {
+  margin-right: unset;
+  margin-inline-end: var(--bs-navbar-brand-margin-end);
+}
+
+// Dropdown
+
+.dropdown-menu {
+  text-align: start;
+}
+
+.dropdown-menu[data-bs-popper] {
+  left: unset;
+  inset-inline-start: 0;
+}
+
+// offcanvas
+
+[dir="rtl"] {
+  .offcanvas.offcanvas-end {
+    right: unset;
+    inset-inline-end: 0;
+    transform: translateX(-100%);
+    border-left: unset;
+    border-inline-start: var(--bs-offcanvas-border-width) solid var(--bs-offcanvas-border-color);
+  }
+
+  .offcanvas.show:not(.hiding),
+  .offcanvas.showing {
+    transform: none;
+  }
+}
+
+// Accordion
+
+.accordion-button::after {
+  margin-left: unset;
+  margin-inline-start: auto;
+}
+
+.alert-dismissible {
+  .btn-close {
+    right: unset;
+    inset-inline-end: 0;
+  }
+}
+
+// Modal
+
+.modal-header {
+  .btn-close {
+    margin: unset;
+    margin-inline-start: auto;
+  }
+}
+
+// Form Check
+
+.form-check-inline {
+  margin-right: unset;
+  margin-inline-end: 1rem;
+}
+
+.form-check {
+  padding-left: unset;
+  padding-inline-start: 1.5em;
+
+  .form-check-input {
+    float: unset;
+    float: inline-start;
+    margin-left: unset;
+    margin-inline-start: -1.5em;
+  }
+}
+
+.form-switch {
+  padding-left: unset;
+  padding-inline-start: 2.5em;
+
+  .form-check-input {
+    margin-left: unset;
+    margin-inline-start: -2.5em;
+  }
+}
+
+// Forms
+
+.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3),
+.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control,
+.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select,
+.input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+  border-radius: $radius;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+  border-inline-end: none;
+}
+
+.input-group>.form-floating:not(:first-child)>.form-control,
+.input-group>.form-floating:not(:first-child)>.form-select {
+  border-radius: $radius;
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+.input-group.has-validation>.dropdown-toggle:nth-last-child(n+4),
+.input-group.has-validation>.form-floating:nth-last-child(n+3)>.form-control,
+.input-group.has-validation>.form-floating:nth-last-child(n+3)>.form-select,
+.input-group.has-validation> :nth-last-child(n+3):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+  border-radius: $radius;
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+  border-inline-end: none;
+}
+
+[dir="rtl"] {
+  .form-select {
+    background-position: left .75rem center;
+  }
+
+  .form-control.is-invalid,
+  .was-validated .form-control:invalid {
+    background-position: left calc(.375em + .1875rem) center;
+  }
+
+  .form-floating {
+    >label {
+      left: unset;
+      inset-inline-end: 0;
+      transform-origin: 100% 0;
+    }
+
+    >.form-control-plaintext~label,
+    >.form-control:focus~label,
+    >.form-control:not(:placeholder-shown)~label {
+      transform: scale(.85) translateY(-.5rem) translateX(-.15rem);
+    }
+
+    >.form-control-plaintext~label,
+    .form-floating>.form-control:focus~label,
+    >.form-control:not(:placeholder-shown)~label,
+    >.form-select~label {
+      transform: scale(.85) translateY(-.5rem) translateX(-.15rem);
+    }
+  }
+}
+
+// Pagination
+
+[dir="rtl"] {
+  .pagination {
+    .page-link i {
+      transform: scaleX(-1);
+      display: inline-block;
+    }
+  }
+}

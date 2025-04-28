@@ -1,0 +1,41 @@
+<section class="services-component">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-3">نحن نقدم افضل خدمات التنظيف الشاملة    </h2>
+    <p class="text-center w-75 mx-auto fs-5">مرحبًا بكم في شركة الاوائل، حيث تلتقي الجودة بالاحترافية لتقديم أفضل خدمات التنظيف في الرياض والمملكة العربية السعودية. نحن هنا لنقدم لك تجربة تنظيف استثنائية تحاكي أعلى معايير النظافة والترتيب، سواء كنت بحاجة لتنظيف منازل، شقق، فلل، أو جلي بلاط, اتصل الان.
+    </p>
+    <div class="row g-4">
+      @for(item of ourServices; track item.title; let i = $index) {
+        @if(i < allService) {
+          <div class="col-lg-4 col-md-6 column">
+            <div class="services-item">
+              <div class="image">
+                <img src="../../../../assets/img/website/{{item.image}}" alt="خدمات التنظيف الشاملة" class="img-fluid">
+                <div class="icon">
+                  <img src="../../../../assets/img/website/{{item.icon}}" alt="خدمات التنظيف الشاملة" class="img-fluid">
+                </div>
+                <svg class="svg-gray" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 368 57"> <g><path d="M0.5,57L184,0,368,57H0.5Z"></path></g> </svg>
+              </div>
+              <div class="services-item-body">
+                <h3 class="mb-4 fw-bold truncate-string-6">  {{item.title}}</h3>
+                <!-- <p>نقدم خدمات التنظيف الشاملة بأرخص الاسعار وفي أسرع وقت مع الضمان.
+                </p> -->
+                <p class="mb-4 line-clamp-4">{{item.description}}</p>
+                <a href="#" class="btn btn-primary d-block w-100">المزيد</a>
+              </div>
+            </div>
+          </div>
+
+        }
+      }
+
+    </div>
+    <div class="text-center mt-5">
+      @if(allService < ourServices.length) {
+        <a  class="btn btn-outline-secondary" (click)="allService = allService + 3" > عرض المزيد <i class="fi fi-rs-arrow-down-left ms-2"></i></a>
+      }
+      <!-- @else {
+        <a  class="btn btn-outline-secondary" (click)="allService = 3" > عرض اقل <i class="fi fi-rs-arrow-down-left ms-2"></i></a>
+      } -->
+      </div>
+  </div>
+</section>

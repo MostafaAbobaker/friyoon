@@ -1,0 +1,147 @@
+@use '../abstracts' as *;
+header{
+  --s-logo:120px;
+
+
+header.top-header{
+  background-color: #005b51;
+  background-color: var(--primary-color-darker);
+  // background-color: var(--primary-color-darker);
+  padding: var(--s-10) ;
+  color: var(--white-color);
+  p {
+    margin-bottom: 0;
+    line-height: 1;
+  }
+}
+.header-contact {
+  background-color: var(--white-color);
+  padding: var(--s-18) ;
+  padding-bottom: var(--s-38);
+  box-shadow: 0 3px 10px 0 rgb(var(--black-rgb-color)/ 6%);
+  position: relative;
+  z-index: 2;
+  .row{
+    padding-inline-start: var(--s-logo);
+  }
+  .column{
+    &:not(:last-child){
+      .item-contact {
+
+        border-inline-end: 2px dashed var(--gray-20-color);
+      }
+    }
+  }
+  .item-contact {
+    display: flex;
+    align-items: center;
+    gap: var(--s-16);
+
+    .icon {
+      height: rem(70);
+      display: grid;
+      place-items: center;
+      i {
+        font-size: var(--s-50);
+        color: var(--primary-color);
+        &.fi-tr-phone-call {
+          &::before {
+            display: block;
+            transform: scaleX(-1);
+          }
+        }
+      }
+    }
+    .item-body-contant {
+      p {
+        color: var(--gray-70-color);
+      }
+      .detail {
+        color: var(--primary-color);
+        font-size: rem(20);
+        font-weight: bold;
+      }
+    }
+    &:hover {
+      .icon{
+
+          -webkit-animation-name: hvr-wobble-vertical;
+        animation-name: hvr-wobble-vertical;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in-out;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+
+      }
+    }
+  }
+}
+
+
+
+
+
+}
+
+@include mqMax(md) {
+  header{
+    --s-logo:70px;}
+  .header-contact {
+    display: none;
+  }
+}
+
+@-webkit-keyframes hvr-wobble-vertical {
+  16.65% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+  33.3% {
+    -webkit-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+  49.95% {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  66.6% {
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateY(1px);
+    transform: translateY(1px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes hvr-wobble-vertical {
+  16.65% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+  33.3% {
+    -webkit-transform: translateY(-6px);
+    transform: translateY(-6px);
+  }
+  49.95% {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  66.6% {
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+  }
+  83.25% {
+    -webkit-transform: translateY(1px);
+    transform: translateY(1px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}

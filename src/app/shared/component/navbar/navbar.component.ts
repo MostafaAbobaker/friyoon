@@ -9,7 +9,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 })
 export class NavbarComponent {
   city: string[] = ['الرياض', 'مكة', 'جدة', 'الدمام'];
-
+  isShowSidebar: boolean = false; // Tracks the sidebar state
   activeSubMenu: string | null = null; // Tracks the active submenu
   isCollapsed: boolean = false; // Tracks the sidebar state
   toggleSubMenu(subMenu: string): void {

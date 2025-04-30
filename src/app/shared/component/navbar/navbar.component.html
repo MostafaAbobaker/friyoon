@@ -14,6 +14,7 @@
         aria-controls="navbarNav"
         aria-expanded="false"
         aria-label="Toggle navigation"
+        (click)="isShowSidebar = !isShowSidebar;"
       >
       <i class="fi fi-br-menu-burger"></i>
       </button>
@@ -117,3 +118,105 @@
   </header>
 
 </div>
+
+
+
+<!-- View Mobile -->
+<div class="view-mobile" [class.show]="isShowSidebar">
+  <aside class="sidebar" id="sidebar">
+    <ul >
+      <li >
+        <a  aria-current="page" routerLink="home" routerLinkActive="active"
+          >الرئيسية</a
+        >
+      </li>
+      <li  >
+        <a  (click)="toggleSubMenu('clean')"  routerLink="our-service" routerLinkActive="active"> خدمات التنظيف الشاملة</a>
+        <div class="sub-menu w-100" [class.show]="activeSubMenu === 'clean' && isCollapsed === false">
+          <div class="sub-content">
+            <div class="container">
+              <div class="row">
+                @for(item of city;track item) {
+                  <div class="col-lg-{{12/city.length}}">
+                    <div class="sub-content">
+                    <h6> شركات تنظيف ب{{item}}</h6>
+                    <ul >
+                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف منازل ب{{item}}</a></li>
+                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف خزانات ب{{item}}</a></li>
+                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف موكيت ب{{item}}</a></li>
+                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف ب{{item}} فلبينيين</a></li>
+                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف فلل ب{{item}}</a></li>
+                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف سجاد شرق {{item}}</a></li>
+                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف شبابيك ب{{item}}</a></li>
+                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف ارضيات ب{{item}}</a></li>
+                      <li><a   routerLink="our-service" routerLinkActive="active"> أرخص شركة تنظيف محلات ب{{item}}</a></li>
+                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف مساجد ب{{item}}</a></li>
+                    </ul>
+                  </div>
+                </div>
+                }
+
+
+
+              <!--  -->
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </li>
+
+      <li   >
+        <a  (click)="toggleSubMenu('DrainCleaning')" routerLink="our-service" routerLinkActive="active">خدمات تسليك المجاري</a>
+        <div class="sub-menu " [class.show]="activeSubMenu === 'DrainCleaning' && isCollapsed === false">
+          <div class="sub-content">
+            <ul class=" p-2 bg-white">
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" >شركة رش مبيدات بالرياض</a></li>
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" >شركة مكافحة حشرات بالدرعية</a></li>
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" >شركة رش عقارب بالرياض</a></li>
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" >شركة رش نمل بالرياض</a></li>
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" >شركة رش مبيدات بالمجمعة</a></li>
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" >شركة رش مبيدات ومكافحة حشرات بعفيف</a></li>
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" >شركة رش مبيدات ومكافحة حشرات بالزلفي</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li   >
+        <a  (click)="toggleSubMenu('AirConditioning')" routerLink="our-service" routerLinkActive="active">   خدمات المكيفات</a>
+        <div class="sub-menu " [class.show]="activeSubMenu === 'AirConditioning' && isCollapsed === false">
+          <div class="sub-content">
+            <ul class=" p-2 bg-white">
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" > شركة تركيب مكيفات مركزية بالرياض  </a></li>
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" > شركة تركيب مكيفات بخميس مشيط  </a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li >
+        <a   routerLink="our-service" routerLinkActive="active">    خدمات نقل العفش</a>
+      </li>
+
+
+      <li >
+        <a (click)="toggleSubMenu('more')"  routerLink="our-service" routerLinkActive="active"> المزيد</a>
+        <div class="sub-menu " [class.show]="activeSubMenu === 'more' && isCollapsed === false">
+          <div class="sub-content">
+            <ul class=" p-2 bg-white">
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" >   خدمات مكافحة الحشرات</a></li>
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" > خدمات رش المبيدات  </a></li>
+              <li class=""><a  routerLink="our-service" routerLinkActive="active" >   </a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+      <li >
+        <a   routerLink="our-service" routerLinkActive="active"><i class="fi fi-rr-search"></i></a>
+      </li>
+    </ul>
+  </aside>
+  <div class="overlay" (click)="isShowSidebar = false"></div>
+ </div>
+<!-- View Mobile -->

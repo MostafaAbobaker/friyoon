@@ -1,0 +1,72 @@
+@use '../abstracts' as *;
+
+.service-details {
+  .service-details-content {
+    padding-block: rem(80);
+    .shift-content {
+      background-color: var(--gray-15-color);
+      padding-block: rem(50);
+      margin-block: rem(50);
+    }
+  }
+  .image {
+    box-shadow: 0 0 rem(20) rgb(var(--black-rgb-color) / 30%);
+    border-radius: rem(20);
+    img{
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      object-position: center;
+      border: 5px solid var(--primary-color-light);
+      border-radius: rem(20);
+    }
+    &.image-start{
+      transform: perspective(1000px) rotateY(-17deg);
+    }
+    &.image-end{
+      transform: perspective(1000px) rotateY(17deg);
+    }
+  }
+  .title {
+    border-inline-start: rem(5) solid var(--primary-color-light);
+    padding-block: rem(10);
+    padding-inline-start: rem(30);
+    margin-bottom: rem(30);
+
+    h6 {
+      line-height: 2;
+      text-wrap: balance;
+      color: var(--gray-60-color);
+      margin-bottom: 0;
+    }
+    h4 {
+      font-weight: bold;
+      color: var(--primary-color);
+
+    }
+
+  }
+  p {
+    text-wrap: balance;
+    line-height: 2;
+    font-weight: 500;
+    margin-bottom: rem(20);
+  }
+  ul {
+    li {
+      font-weight: 600;
+      color: var(--gray-70-color);
+      margin-bottom: rem(16);
+      padding-inline-start: rem(20);
+      position: relative;
+      &::before{
+        content: '\f111';
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+        inset-inline-start: rem(-20);
+        position: relative;
+        color: var(--primary-color-light);
+      }
+    }
+  }
+}

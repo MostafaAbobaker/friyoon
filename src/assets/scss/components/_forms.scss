@@ -103,13 +103,13 @@
 .form-floating {
   font-size: var(--s-14);
 
-  >label {
+  > label {
     padding-inline-start: $padding-x;
     padding-inline-end: $padding-x;
   }
 
-  >.form-control,
-  >.form-control-plaintext {
+  > .form-control,
+  > .form-control-plaintext {
     padding-inline-start: $padding-x;
     padding-inline-end: $padding-x;
   }

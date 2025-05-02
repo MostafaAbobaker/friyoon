@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { MainServicesService } from '../../services/main-services.service';
+import { IMainServices } from '../../interface/i-main-services';
 
 @Component({
   selector: 'app-services',
@@ -9,7 +11,8 @@ import { Component } from '@angular/core';
 })
 export class ServicesComponent {
   allService = 3;
-  ourServices = [
+  ourServices:IMainServices[] = []; // Initialize ourServices as an empty array
+  /* ourServices = [
     {
       title:'خدمات التنظيف الشاملة' ,
       description:'          تقدم شركة فريون خدمات تنظيف شاملة للمنازل والشقق والفلل باستخدام اقوى انواع المنظفات المستوردة واحدث اجهزة التنظيف العالمية.',
@@ -74,5 +77,23 @@ export class ServicesComponent {
       icon:'floor.png'
     },
 
-  ]
+  ] */
+
+  constructor(private _mainServices: MainServicesService) {
+  }
+  ngOnInit() {
+    this.getAllServices();
+  }
+  getAllServices() {
+    this._mainServices.getMainServices().subscribe({
+      next: (res) => {
+        this.ourServices = res.data ; // Cast the response to IContact[]
+        console.log( this.ourServices);
+
+      },
+      error: (err) => {
+        alert(err.message);
+      }
+    });
+  }
 }

@@ -30,13 +30,16 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-6 column">
-          <a class="item-contact" href="tel:+0558796867">
+          <a class="item-contact" href="tel:{{contactInfo[2].phone}}">
             <div class="icon">
               <i class="fi fi-tr-phone-call sc"></i>
             </div>
             <div class="item-body-contant">
               <p>طلب المساعدة : </p>
-              <p class="dir-ltr detail">(+966) 055 879 6867</p>
+              <p class="dir-ltr detail">
+                <!-- (+966) 055 879 6867 -->
+                {{formatPhoneNumber(contactInfo[2].phone)}}
+              </p>
             </div>
           </a>
         </div>
@@ -52,35 +55,38 @@
           </a>
         </div> -->
         <div class="col-lg-3 col-md-6 column">
-          <a class="item-contact" href="tel:+0558796867">
+          <a class="item-contact" href="tel:{{contactInfo[2].phone}}">
             <div class="icon">
               <i class="fi fi-brands-whatsapp"></i>
             </div>
             <div class="item-body-contant">
-              <p class="dir-ltr text-end"> (+966) 055 879 6867   </p>
+              <p class="dir-ltr text-end">
+                {{formatPhoneNumber(contactInfo[2].phone)}}
+                </p>
               <p class=" detail">تواصل معنا بالوتس اب</p>
             </div>
           </a>
         </div>
         <div class="col-lg-3 col-md-6 column">
-          <a class="item-contact" >
+          <a class="item-contact" href="mailto:{{contactInfo[2].email}}">
             <div class="icon">
               <i class="fi fi-tr-newsletter-subscribe"></i>
             </div>
             <div class="item-body-contant">
-              <p> {{email}}   </p>
+              <p> {{contactInfo[2].email}}   </p>
               <p class=" detail">تواصل معنا بالبريد</p>
             </div>
           </a>
         </div>
         <div class="col-lg-3 col-md-6 column">
-          <a class="item-contact" >
+          <a class="item-contact" target="_blank" href="https://goo.gl/maps/2v7Z3a5x8z6g4G9s7">
             <div class="icon">
               <i class="fi fi-tr-land-layer-location"></i>
             </div>
             <div class="item-body-contant">
-              <p> الرياض المملكة العربية السعودية
-
+              <p>
+                 <!-- الرياض المملكة العربية السعودية -->
+                 {{contactInfo[2].address}}
               </p>
               <p class=" detail">  السعودية</p>
             </div>

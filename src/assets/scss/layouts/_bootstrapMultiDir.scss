@@ -150,10 +150,10 @@
 
 // Forms
 
-.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3),
-.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-control,
-.input-group:not(.has-validation)>.form-floating:not(:last-child)>.form-select,
-.input-group:not(.has-validation)> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
+.input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n+3),
+.input-group:not(.has-validation) > .form-floating:not(:last-child)>.form-control,
+.input-group:not(.has-validation) > .form-floating:not(:last-child)>.form-select,
+.input-group:not(.has-validation) > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating) {
   border-radius: $radius;
   border-start-end-radius: 0;
   border-end-end-radius: 0;
@@ -188,22 +188,22 @@
   }
 
   .form-floating {
-    >label {
+    & > label {
       left: unset;
       inset-inline-end: 0;
       transform-origin: 100% 0;
     }
 
-    >.form-control-plaintext~label,
-    >.form-control:focus~label,
-    >.form-control:not(:placeholder-shown)~label {
+    & > .form-control-plaintext~label,
+    & > .form-control:focus~label,
+    & > .form-control:not(:placeholder-shown)~label {
       transform: scale(.85) translateY(-.5rem) translateX(-.15rem);
     }
 
-    >.form-control-plaintext~label,
-    .form-floating>.form-control:focus~label,
-    >.form-control:not(:placeholder-shown)~label,
-    >.form-select~label {
+    & > .form-control-plaintext~label,
+    .form-floating > .form-control:focus~label,
+    & > .form-control:not(:placeholder-shown)~label,
+    & > .form-select~label {
       transform: scale(.85) translateY(-.5rem) translateX(-.15rem);
     }
   }

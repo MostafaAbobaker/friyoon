@@ -4,8 +4,9 @@
       <div class="col-md-3 mb-5">
         <div class="content">
           <h5>  من نحن</h5>
-          <p>تقدم شركة فريون خدمات تنظيف شاملة مثل تنظيف المنازل والشقق والفلل وجلي البلاط وغيرها باستخدام اقوى انواع المنظفات المستوردة واحدث اجهزة التنظيف العالمية والعديد من الخدمات المنزلية الاخرى.
-          </p>
+          <p>{{contactInfo[2].aboutUs}}</p>
+          <!-- <p>تقدم شركة فريون خدمات تنظيف شاملة مثل تنظيف المنازل والشقق والفلل وجلي البلاط وغيرها باستخدام اقوى انواع المنظفات المستوردة واحدث اجهزة التنظيف العالمية والعديد من الخدمات المنزلية الاخرى.
+          </p> -->
         </div>
       </div>
 
@@ -27,9 +28,10 @@
         <h5>بيانات الاتصال
         </h5>
         <p class="fw-bold mb-4"> <i class="fa-solid fa-location-dot me-2 fa-fw"></i> الموقع :
-          <span class="ms-2 fw-light">الرياض المملكة العربية السعودية
-
-          </span>
+          <a class="ms-2 fw-light text-white" href="https://goo.gl/maps/2v7Z3a5x8z6g4G9s7" target="_blank" >
+            <!-- الرياض المملكة العربية السعودية -->
+            {{contactInfo[2].address}}
+          </a>
         </p>
         <p class="fw-bold mb-4"> <i class="fa-solid fa-clock me-2 fa-fw"></i> ساعات العمل :
           <span class="ms-2 fw-light">24/7 طوال ايام الاسبوع
@@ -37,8 +39,10 @@
           </span>
         </p>
         <p class="fw-bold"> <i class="fa-solid fa-mobile-screen me-2 fa-fw"></i>  رقم الجوال :
-          <a  href="tel:0558796867" class="me-2 fw-light text-white dir-ltr d-inline-block"> (+966) 055 879 6867
-
+          <a  href="tel:{{contactInfo[2].phone}}" class="me-2 fw-light text-white dir-ltr d-inline-block">
+             <!-- (+966) 055 879 6867 -->
+             <!-- {{contactInfo[2].phone}} -->
+             {{formatPhoneNumber(contactInfo[2].phone)}}
           </a>
         </p>
 
@@ -51,9 +55,9 @@
         <h5>سوشيال ميديا
         </h5>
         <ul class="list-unstyled  social-media">
-          <li><a href="#" class="text-white"><i class="fa-brands fa-facebook-f fa-lg fa-fw"></i></a></li>
-          <li><a href="#" class="text-white"><i class="fa-brands fa-x-twitter fa-lg fa-fw"></i></a></li>
-          <li><a href="#" class="text-white"><i class="fa-brands fa-instagram fa-lg fa-fw"></i></a></li>
+          <li><a [href]="contactInfo[2].faceBookPage" class="text-white" target="_blank"><i class="fa-brands fa-facebook-f fa-lg fa-fw"></i></a></li>
+          <li><a [href]="contactInfo[2].xPage" class="text-white" target="_blank"><i class="fa-brands fa-x-twitter fa-lg fa-fw"></i></a></li>
+          <li><a [href]="contactInfo[2].instagramPage" class="text-white" target="_blank"><i class="fa-brands fa-instagram fa-lg fa-fw"></i></a></li>
         </ul>
       </div>
     </div>

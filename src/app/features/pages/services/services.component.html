@@ -20,7 +20,7 @@
                 <!-- <p>نقدم خدمات التنظيف الشاملة بأرخص الاسعار وفي أسرع وقت مع الضمان.
                 </p> -->
                 <p class="mb-4 line-clamp-4">{{item.descriptionAr}}</p>
-                <a href="#" class="btn btn-primary d-block w-100">المزيد</a>
+                <a [routerLink]="['../our-service/',item.id]" class="btn btn-primary d-block w-100">المزيد</a>
               </div>
             </div>
           </div>

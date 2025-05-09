@@ -7,17 +7,17 @@
         <div class="col-md-3 d-flex justify-content-end">
           <ul class="list-unstyled social-media d-flex gap-2">
             <li>
-              <a href="#" class="text-white"
+              <a [href]="contactInfo.faceBookPage"  target="_blank" class="text-white"
                 ><i class="fa-brands fa-facebook-f fa-fw"></i
               ></a>
             </li>
             <li>
-              <a href="#" class="text-white"
+              <a [href]="contactInfo.xPage" target="_blank" class="text-white"
                 ><i class="fa-brands fa-x-twitter fa-fw"></i
               ></a>
             </li>
             <li>
-              <a href="#" class="text-white"
+              <a [href]="contactInfo.instagramPage"  target="_blank" class="text-white"
                 ><i class="fa-brands fa-instagram fa-fw"></i
               ></a>
             </li>
@@ -30,7 +30,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-3 col-md-6 column">
-          <a class="item-contact" href="tel:{{contactInfo[2].phone}}">
+          <a class="item-contact" href="tel:{{contactInfo.phone}}">
             <div class="icon">
               <i class="fi fi-tr-phone-call sc"></i>
             </div>
@@ -38,7 +38,7 @@
               <p>طلب المساعدة : </p>
               <p class="dir-ltr detail">
                 <!-- (+966) 055 879 6867 -->
-                {{formatPhoneNumber(contactInfo[2].phone)}}
+                {{formatPhoneNumber(contactInfo.phone)}}
               </p>
             </div>
           </a>
@@ -55,25 +55,25 @@
           </a>
         </div> -->
         <div class="col-lg-3 col-md-6 column">
-          <a class="item-contact" href="tel:{{contactInfo[2].phone}}">
+          <a class="item-contact" href="tel:{{contactInfo.phone}}">
             <div class="icon">
               <i class="fi fi-brands-whatsapp"></i>
             </div>
             <div class="item-body-contant">
               <p class="dir-ltr text-end">
-                {{formatPhoneNumber(contactInfo[2].phone)}}
+                {{formatPhoneNumber(contactInfo.phone)}}
                 </p>
               <p class=" detail">تواصل معنا بالوتس اب</p>
             </div>
           </a>
         </div>
         <div class="col-lg-3 col-md-6 column">
-          <a class="item-contact" href="mailto:{{contactInfo[2].email}}">
+          <a class="item-contact" href="mailto:{{contactInfo.email}}">
             <div class="icon">
               <i class="fi fi-tr-newsletter-subscribe"></i>
             </div>
             <div class="item-body-contant">
-              <p> {{contactInfo[2].email}}   </p>
+              <p> {{contactInfo.email}}   </p>
               <p class=" detail">تواصل معنا بالبريد</p>
             </div>
           </a>
@@ -86,7 +86,7 @@
             <div class="item-body-contant">
               <p>
                  <!-- الرياض المملكة العربية السعودية -->
-                 {{contactInfo[2].address}}
+                 {{contactInfo.address}}
               </p>
               <p class=" detail">  السعودية</p>
             </div>

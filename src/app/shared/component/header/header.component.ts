@@ -10,7 +10,7 @@ import { ContactService } from '../../services/contact.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-    contactInfo :IContact [] = []; // Initialize contactInfo as an empty array
+    contactInfo! :IContact
 
     constructor(private _contactService: ContactService) {
     }
@@ -20,7 +20,7 @@ export class HeaderComponent {
     getContactInfo() {
       this._contactService.getContact().subscribe({
         next: (res) => {
-          this.contactInfo = res.data as IContact[]; // Cast the response to IContact[]
+          this.contactInfo = res.data ; // Cast the response to IContact[]
         },
         error: (err) => {
           alert(err.message);
@@ -29,18 +29,24 @@ export class HeaderComponent {
     }
 
 
-    formatPhoneNumber(phone: string): string {
-      // Check if the phone number starts with a '+' and has 13 digits
-      if (!phone.startsWith('+') ) {
-        return phone.replace(/^(\d{3})(\d{3})(\d{4})$/, "$1 $2 $3");
+   formatPhoneNumber(phone: string): string {
+      // إزالة أي مسافات زائدة
+      phone = phone.trim();
 
-
-      } else if (phone.startsWith('+') ) {
-        return phone.replace(/^(\+\d{3})(\d{3})(\d{3})(\d{4})$/, "($1) $2 $3 $4");
-
-      } else {
-        return phone
-      }
+    // Normalize input (remove leading '00' and replace with '+')
+    if (phone.startsWith("00")) {
+        phone = "+" + phone.substring(2);
     }
+
+    // Format based on the structure
+    if (phone.startsWith("+966")) {
+        return phone.replace(/^\+966(\d{3})(\d{3})(\d{4})$/, "(+966) $1 $2 $3");
+    } else if (phone.length === 10) {
+        return phone.replace(/^(\d{3})(\d{3})(\d{4})$/, "$1 $2 $3");
+    } else {
+        return phone; // Return as-is if format is not recognized
+    }
+
+  }
 
 }

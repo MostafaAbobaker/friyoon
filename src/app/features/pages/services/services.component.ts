@@ -2,14 +2,17 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { MainServicesService } from '../../services/main-services.service';
 import { IMainServices } from '../../interface/i-main-services';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-services',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, ],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })
 export class ServicesComponent {
+  serviceUrl:number |null  = null
+
   allService = 3;
   ourServices:IMainServices[] = []; // Initialize ourServices as an empty array
   /* ourServices = [
@@ -79,16 +82,21 @@ export class ServicesComponent {
 
   ] */
 
-  constructor(private _mainServices: MainServicesService) {
+  constructor(private _mainServices: MainServicesService,     private _activatedRoute:ActivatedRoute ,
+  ) {
   }
   ngOnInit() {
+
+    this._activatedRoute.paramMap.subscribe((params) => {
+      this.serviceUrl = Number(params.get('id'));
+      console.log(this.serviceUrl);
+    });
     this.getAllServices();
   }
   getAllServices() {
     this._mainServices.getMainServices().subscribe({
       next: (res) => {
         this.ourServices = res.data ; // Cast the response to IContact[]
-        console.log( this.ourServices);
 
       },
       error: (err) => {

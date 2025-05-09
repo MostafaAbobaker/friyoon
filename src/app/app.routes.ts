@@ -8,7 +8,7 @@ export const routes: Routes = [
   {path:'',component: HomeLayoutComponent,children:[
     {path:'',redirectTo:'home',pathMatch:'full'},
     {path:'home',component: HomeComponent},
-    {path:'our-service',component: OurServiceComponent},
+    {path:'our-service/:id',component: OurServiceComponent},
     {path:'service-details',component: ServiceDetailsComponent},
   ]},
   // {path: 'home', loadComponent: () => import('./core/Layout/home-layout/home-layout.component').then(m => m.HomeLayoutComponent)},

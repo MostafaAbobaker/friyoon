@@ -6,15 +6,15 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-services',
-  imports: [CommonModule, RouterModule, ],
+  imports: [CommonModule, RouterModule],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })
 export class ServicesComponent {
-  serviceUrl:number |null  = null
+  serviceUrl: number | null = null
 
   allService = 3;
-  ourServices:IMainServices[] = []; // Initialize ourServices as an empty array
+  ourServices: IMainServices[] = []; // Initialize ourServices as an empty array
   /* ourServices = [
     {
       title:'خدمات التنظيف الشاملة' ,
@@ -82,7 +82,7 @@ export class ServicesComponent {
 
   ] */
 
-  constructor(private _mainServices: MainServicesService,     private _activatedRoute:ActivatedRoute ,
+  constructor(private _mainServices: MainServicesService , private _activatedRoute: ActivatedRoute
   ) {
   }
   ngOnInit() {
@@ -96,7 +96,7 @@ export class ServicesComponent {
   getAllServices() {
     this._mainServices.getMainServices().subscribe({
       next: (res) => {
-        this.ourServices = res.data ; // Cast the response to IContact[]
+        this.ourServices = res.data; // Cast the response to IContact[]
 
       },
       error: (err) => {

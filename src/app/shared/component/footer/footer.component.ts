@@ -9,7 +9,8 @@ import { IContact } from '../../interface/icontact';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-  contactInfo! :IContact; // Initialize contactInfo as an empty array
+  contactInfo :IContact = {} as IContact;
+
   year: number = new Date().getFullYear(); // Get the current year
 
   constructor(private _contactService: ContactService) {
@@ -20,7 +21,12 @@ export class FooterComponent {
   getContactInfo() {
     this._contactService.getContact().subscribe({
       next: (res) => {
-        this.contactInfo = res.data ; // Cast the response to IContact[]
+        if (res?.data) {
+          this.contactInfo = res.data;
+        } else {
+          console.error("Data is undefined or missing.");
+        }
+
       },
       error: (err) => {
         alert(err.message);
@@ -30,23 +36,31 @@ export class FooterComponent {
   }
 
 
-  formatPhoneNumber(phone: string): string {
-    phone = phone.trim();
+  formatPhoneNumber(phone: string | undefined): string {
+      // إزالة أي مسافات زائدة
+      if (phone) {
+        phone = phone.trim();
 
-    // Normalize input (remove leading '00' and replace with '+')
-    if (phone.startsWith("00")) {
-        phone = "+" + phone.substring(2);
+      // Normalize input (remove leading '00' and replace with '+')
+      if (phone.startsWith("00")) {
+          phone = "+" + phone.substring(2);
+      }
+
+      // Format based on the structure
+      if (phone.startsWith("+966")) {
+          return phone.replace(/^\+966(\d{3})(\d{3})(\d{4})$/, "(+966) $1 $2 $3");
+      } else if (phone.length === 10) {
+          return phone.replace(/^(\d{3})(\d{3})(\d{4})$/, "$1 $2 $3");
+      } else {
+          return phone; // Return as-is if format is not recognized
+      }
+
+    }  else {
+      return "";
+
     }
 
-    // Format based on the structure
-    if (phone.startsWith("+966")) {
-        return phone.replace(/^\+966(\d{3})(\d{3})(\d{4})$/, "(+966) $1 $2 $3");
-    } else if (phone.length === 10) {
-        return phone.replace(/^(\d{3})(\d{3})(\d{4})$/, "$1 $2 $3");
-    } else {
-        return phone; // Return as-is if format is not recognized
-    }
-}
+  }
 
 
 }

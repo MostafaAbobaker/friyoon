@@ -26,11 +26,12 @@ export class LoginLayoutComponent {
           console.log(response);
           localStorage.setItem('token', response.token);
 
-          this.Router.navigate(['../home']);
+          this.Router.navigate(['../admin']);
 
         },
         error: (err) => {
-          alert(err.message)
+          console.log(err.message);
+
         }
       })
 

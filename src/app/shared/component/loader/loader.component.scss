@@ -1,0 +1,11 @@
+@use '../../../../assets/scss/abstracts' as *;;
+.loader-component {
+  display: grid;
+  place-items: center;
+  background-color: rgba(0,0,0,.9);
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  color: var(--primary-color);
+  font-size: rem(50);
+}

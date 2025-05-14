@@ -100,7 +100,8 @@ export class ServicesComponent {
 
       },
       error: (err) => {
-        alert(err.message);
+        console.log(err.message);
+
       }
     });
   }

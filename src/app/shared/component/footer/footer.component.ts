@@ -29,7 +29,7 @@ export class FooterComponent {
 
       },
       error: (err) => {
-        alert(err.message);
+        console.log(err.message);
 
       }
     });

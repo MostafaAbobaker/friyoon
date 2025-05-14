@@ -158,6 +158,7 @@ body .p-multiselect , body .form-select {
   }
   .p-multiselect-label {
     color: var(--gray-90-color);
+    padding: 0.5rem 1rem;;
   }
   .p-chip {
     background-color: var(--gray-15-color);
@@ -307,4 +308,16 @@ body .p-floatlabel {
   .p-multiselect-label {
     padding-block: rem(4.8);
   }
+}
+.p-toast-detail {
+  color: var(--primary-color) !important;
+}
+
+
+body .p-editor .p-editor-content .ql-editor  , body .p-editor .p-editor-toolbar{
+  background-color: var(--white-color);
+}
+body .p-editor .p-editor-toolbar , body .p-editor .p-editor-content.ql-snow {
+    border: 1px solid var(--gray-25-color) !important;
+
 }

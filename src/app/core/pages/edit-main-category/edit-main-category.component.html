@@ -1,0 +1,153 @@
+<section class="add-main-category services-component">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="../admin" class="d-inline-block">الرئيسية</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a routerLink="../../main-category" class="d-inline-block">
+            الفئات الرئيسية</a
+          >
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">تعديل فئة</li>
+      </ol>
+    </nav>
+    <div class="title d-flex justify-content-between align-items-center my-5">
+      <h5>تعديل فئة</h5>
+      <div class="d-flex align-items-center gap-3">
+        <button
+          class="btn btn-outline-primary align-items-center d-flex"
+          (click)="editCategory()"
+        >
+          <i class="fi fi-rr-disk me-2"></i> تعديل
+        </button>
+        <a
+          routerLink="../main-category"
+          class="btn btn-outline-secondary align-items-center d-flex"
+          ><i class="fi fi-rr-arrow-left me-2"></i> رجوع
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <form
+          class="form"
+          (ngSubmit)="editCategory()"
+          [formGroup]="formCategory"
+        >
+          <div class="container bg-white shadow-sm p-5 rounded-2">
+            <div class="row justify-content-center">
+              <div class="col-lg-8 mb-3">
+                <div class="">
+                  <label for="nameAr" class="form-label">الفئة </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nameAr"
+                    id="nameAr"
+                  />
+                  @if(formCategory.get('nameAr')?.invalid &&
+                  formCategory.get('nameAr')?.touched) {
+                  <div class="text-danger">
+                    @if(formCategory.get('nameAr')?.getError('required')) {
+                    <div>هذا الحق اجبارى</div>
+
+                    }
+                  </div>
+
+                  }
+                </div>
+              </div>
+              <div class="col-lg-8 mb-3">
+                <div class="">
+                  <label for="imagefile" class="form-label">صورة الفئة</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="imagefile"
+                    (change)="onFileImageSelected($event)"
+                    accept="image/*"
+                    required
+                  />
+                  @if(formCategory.get('imagefile')?.invalid &&
+                  formCategory.get('imagefile')?.touched) {
+                  <div class="text-danger">
+                    @if(formCategory.get('imagefile')?.getError('required')) {
+                    <div>هذا الحق اجبارى</div>
+
+                    }
+                  </div>
+
+                  }
+                </div>
+              </div>
+              <div class="col-lg-8 mb-3">
+                <div class="">
+                  <label for="iconfile" class="form-label">أيقونة الفئة</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    id="iconfile"
+                    (change)="onFileIconSelected($event)"
+                    accept="image/*"
+                    required
+                  />
+                  @if(formCategory.get('iconfile')?.invalid &&
+                  formCategory.get('iconfile')?.touched) {
+                  <div class="text-danger">
+                    @if(formCategory.get('iconfile')?.getError('required')) {
+                    <div>هذا الحق اجبارى</div>
+
+                    }
+                  </div>
+
+                  }
+                </div>
+              </div>
+              <div class="col-lg-8 mb-3">
+                <div class="">
+                  <label for="descriptionAr" class="form-label">الوصف </label>
+                  <textarea
+                    name=""
+                    class="form-control"
+                    formControlName="descriptionAr"
+                    id="descriptionAr"
+                  ></textarea>
+                  <!-- <input type="text" class="form-control" formControlName="descriptionAr" id="descriptionAr"> -->
+                  @if(formCategory.get('descriptionAr')?.invalid &&
+                  formCategory.get('descriptionAr')?.touched) {
+                  <div class="text-danger">
+                    @if(formCategory.get('descriptionAr')?.getError('required'))
+                    {
+
+                    <div>هذا الحق اجبارى</div>
+                    }
+                  </div>
+
+                  }
+                </div>
+              </div>
+              <!-- <div class="col-lg-3">
+              <div class="">
+                <label for="Fees" class="form-label d-block"> صورة الفئة</label>
+                <app-upload (fileSelected)="onFileSelected($event)" class="form-control form-control-sm"></app-upload>
+
+              </div>
+              </div>
+              <div class="col-lg-3">
+              <div class="">
+                <label for="Fees" class="form-label d-block"> الايقونة</label>
+                <app-upload (fileSelected)="onIconeSelected($event)" class="form-control form-control-sm"></app-upload>
+              </div>
+              </div> -->
+            </div>
+            <div class="row"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p-toast />

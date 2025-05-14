@@ -1,0 +1,102 @@
+<section class="add-main-category services-component">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a routerLink="../admin" class="d-inline-block">الرئيسية</a>
+        </li>
+        <li class="breadcrumb-item">
+          <a routerLink="../../main-category" class="d-inline-block">
+            الخدمات</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">إضافة خدمة</li>
+      </ol>
+    </nav>
+    <div class="title d-flex justify-content-between align-items-center my-5">
+      <h5>إضافة خدمة</h5>
+      <div class="d-flex align-items-center gap-3">
+        <button class="btn btn-outline-primary align-items-center d-flex">
+          <i class="fi fi-rr-disk me-2"></i> حفظ
+        </button>
+        <a routerLink="../main-category" class="btn btn-outline-secondary align-items-center d-flex"><i
+            class="fi fi-rr-arrow-left me-2"></i> رجوع
+        </a>
+      </div>
+    </div>
+    <div class="row bg-white shadow-sm p-5 rounded-2">
+      <div class="col-lg-12">
+        <form class="form" (ngSubmit)="addSubCategory()" [formGroup]="formSubCategory">
+          <div class="container add-item mb-3">
+            <div class="row g-3">
+              <div class="col-lg-12">
+                <div class="">
+                  <label for="nameAr" class="form-label">اسم الخدمة</label>
+                  <input type="text" class="form-control" formControlName="nameAr" id="nameAr" />
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <div class="">
+                  <label for="categoryId" class="form-label">الفئة</label>
+                  <select class="form-select" id="categoryId" formControlName="categoryId">
+                    <option value="" selected>اختر الفئة</option>
+                    <option *ngFor="let category of categories" [value]="category.id">
+                      {{ category.nameAr }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="">
+                  <label for="LocationIds" class="form-label"> المناطق</label>
+                  <p-multiSelect [options]="governorates" optionValue="id" optionLabel="nameAr" styleClass="w-100"
+                    formControlName="LocationIds" display="chip" [showClear]="true" placeholder="مناطق الخدمة" />
+                </div>
+              </div>
+              <div class="col-lg-12" style="display: none">
+                <div class="d-flex justify-content-evenly">
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="showHome">
+                      نشر الخدمة و عرضه
+                    </label>
+                    <input type="checkbox" formControlName="showHome" class="form-check-input" id="showHome" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="">
+                  <label for="descAr" class="form-label"> تفاصيل الخدمة </label>
+                  <textarea name="descAr" formControlName="descAr" class="form-control" id="descAr" rows="3"></textarea>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="">
+                  <label for="detailAr" class="form-label">مميزات الخدمة
+                  </label>
+                  <p-editor formControlName="detailAr" [style]="{ height: '320px', direction: 'rtl' }" />
+
+                  <!-- <textarea name="detailAr" formControlName="detailAr" class="form-control" id="detailAr" rows="3"></textarea> -->
+                  <!-- <p-editor [(ngModel)]="text"  [dir]="'rtl'" formControlName="detailAr"  [style]="{ height: '320px', direction:'rtl' }" >
+
+                </p-editor> -->
+                </div>
+              </div>
+
+              <div class="col-lg-12">
+                <div class="">
+                  <label for="Fees" class="form-label"> صورة الخدمة</label>
+                  <input type="file" id="images" (change)="onFileImageSelected($event)" accept="image/*" multiple
+                    class="form-control" />
+                  <!-- <div class="text-danger" *ngIf="formProduct.get('imageForm')?.invalid && formProduct.get('imageForm')?.touched">
+                   <div *ngIf="formProduct.get('imageForm')?.getError('required')">هذا الحق اجبارى</div> </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <p-toast /> -->

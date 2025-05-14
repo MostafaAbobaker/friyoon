@@ -220,6 +220,18 @@
 }
 
 
+.breadcrumb-item {
+  & + .breadcrumb-item {
+    padding-left:unset;
+    padding-inline-start: var(--bs-breadcrumb-item-padding-x);
+    &::before {
+      float: inline-start;
+      padding-right: unset;
+      padding-inline-end: var(--bs-breadcrumb-item-padding-x);
+    }
+  }
+}
+
 // Pagination
 
 [dir="rtl"] {

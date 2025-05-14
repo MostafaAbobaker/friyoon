@@ -1,1 +1,84 @@
-<h1>tttt</h1>
+<section class="services-component">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="../admin">الرئيسية</a></li>
+        <li class="breadcrumb-item active" aria-current="page"> معلومات التواصل</li>
+      </ol>
+    </nav>
+    <div class="title d-flex justify-content-between align-items-center my-5">
+      <h5> معلومات التواصل</h5>
+      <div class="action d-flex align-items-center gap-3">
+        <button  class="btn btn-outline-primary align-items-center d-flex"  *ngIf="!editMode" (click)="toggleEditMode()"><i class="fi fi-rr-disk me-2"></i>  تعديل </button>
+        <button  class="btn btn-outline-primary align-items-center d-flex"  *ngIf="editMode" (click)="updataContactInfo()"><i class="fi fi-rr-disk me-2"></i>  حفظ </button>
+        <a routerLink="../admin" class="btn btn-outline-secondary align-items-center d-flex"><i class="fi fi-rr-arrow-left me-2"></i>  رجوع </a>
+
+      </div>
+
+    </div>
+    <div class="container bg-white shadow-sm p-5 rounded-2">
+      <div class="row justify-content-center ">
+        <div class="col-lg-8">
+
+          <form [formGroup]="formContactus" (ngSubmit)="updataContactInfo()" class="form">
+            <div class="mb-3 row">
+              <label for="phone" class="col-sm-2 col-form-label fw-medium">الجوال</label>
+              <div class="col-sm-10">
+                <input  type="text"  class="form-control" id="phone" formControlName="phone"   >
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="whatsApp" class="col-sm-2 col-form-label fw-medium">الوتس اب </label>
+              <div class="col-sm-10">
+                <input  type="text"  class="form-control" id="whatsApp" formControlName="whatsApp" >
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="faceBookPage" class="col-sm-2 col-form-label fw-medium">الفيس بوك </label>
+              <div class="col-sm-10">
+                <input  type="text"  class="form-control" id="faceBookPage" formControlName="faceBookPage" >
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="aboutUs" class="col-sm-2 col-form-label fw-medium">من نحن </label>
+              <div class="col-sm-10">
+                <input  type="text"  class="form-control" id="aboutUs" formControlName="aboutUs" >
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="details" class="col-sm-2 col-form-label fw-medium">التفصيل</label>
+              <div class="col-sm-10">
+                <input  type="text"  class="form-control" id="details" formControlName="details" >
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="address" class="col-sm-2 col-form-label fw-medium">العنوان</label>
+              <div class="col-sm-10">
+                <input  type="text"  class="form-control" id="address" formControlName="address" >
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="email" class="col-sm-2 col-form-label fw-medium ">البريد الإلكترونى</label>
+              <div class="col-sm-10">
+                <input  type="email"  class="form-control" id="email" formControlName="email" >
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="instagramPage" class="col-sm-2 col-form-label fw-medium">الانستجرام </label>
+              <div class="col-sm-10">
+                <input  type="text"  class="form-control" id="instagramPage" formControlName="instagramPage" >
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="xPage" class="col-sm-2 col-form-label fw-medium">تويتر x </label>
+              <div class="col-sm-10">
+                <input  type="text"  class="form-control" id="xPage" formControlName="xPage" >
+              </div>
+            </div>
+
+          </form>
+        </div>
+    </div>
+      </div>
+      </div>
+      </section>

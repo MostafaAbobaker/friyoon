@@ -1,5 +1,33 @@
 
 <app-header></app-header>
-<h1 class="my-5 py-5 text-center">Hello Admin</h1>
-<router-outlet></router-outlet>
+<section class="home-admin-Container py-5 my-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <a class="card text-center" routerLink="../main-category">
+          <i class="fi fi-rr-department-structure  text-primary" style="font-size: 62px;"></i>
+          <h4>فئة</h4>
+        </a>
+      </div>
+      <div class="col-lg-3">
+        <a class="card text-center" routerLink="../governorates">
+          <i class="fi fi-rr-map-marker text-primary" style="font-size: 62px;"></i>
+          <h4>المحافظات</h4>
+        </a>
+      </div>
+      <div class="col-lg-3">
+        <a class="card text-center" routerLink="../contact-us">
+          <i class="fi fi-rr-address-book text-primary" style="font-size: 62px;"></i>
+          <h4>بيانات الاتصال</h4>
+        </a>
+      </div>
+      <div class="col-lg-3">
+        <a class="card text-center" routerLink="../sub-category">
+          <i class="fi fi-rr-customer-care text-primary" style="font-size: 62px;"></i>
+          <h4>الخدمات</h4>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 <app-footer></app-footer>

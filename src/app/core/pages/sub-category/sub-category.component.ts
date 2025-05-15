@@ -3,17 +3,18 @@ import { RouterModule } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { SubCategoryService } from '../../services/sub-category.service';
 import { ISubCategory } from '../../interface/isub-category';
-
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-sub-category',
   imports: [RouterModule, TableModule],
   templateUrl: './sub-category.component.html',
-  styleUrl: './sub-category.component.scss'
+  styleUrl: './sub-category.component.scss',
+  providers: [MessageService]
 })
 export class SubCategoryComponent implements OnInit{
-  subCategoryList!: ISubCategory[];
+  serviceList!: ISubCategory[];
   subCategoryEmpty:ISubCategory[] = []
-
+  filteredServices: ISubCategory[] = [];
 
   PageNumber = 0;
   PageSize = 5;
@@ -23,7 +24,10 @@ export class SubCategoryComponent implements OnInit{
   porductDeleted:number = 0;
 
 
-  constructor(private _subCategoryService:SubCategoryService) {
+  constructor(
+    private _subCategoryService: SubCategoryService,
+    private messageService: MessageService,
+  ) {
 
   }
   ngOnInit(): void {
@@ -31,14 +35,51 @@ export class SubCategoryComponent implements OnInit{
   }
   getAllSubCategory() {
 
-    this._subCategoryService.getAllSubCategory(this.totalRecords,this.PageSize).subscribe({
+    this._subCategoryService.getAllSubCategory(this.PageNumber,this.PageSize).subscribe({
       next:(res)=>{
         console.log(res);
         this.totalRecords = res.totalCount;
-        // this.PageSize= data.limit;
-        this.subCategoryList = res.data;
+        this.serviceList = res.data;
+        this.filteredServices = res.data;
       } , error:(err)=>{console.log(err);
       }
     })
   }
+  showdeleteServicePopup(id: number) {
+    this.porductDeleted = id;
+  }
+  deleteService() {
+    debugger
+    this._subCategoryService.deleteService(this.porductDeleted).subscribe({
+      next: (response) => {
+        if (response.statusCode == 200) {
+          this.messageService.add({ severity: 'info', summary: 'تنبيه', detail: response.message });
+          this.getAllSubCategory();
+        }
+        else {
+          this.messageService.add({ severity: 'error', summary: 'تنبيه', detail: response.message });
+        }
+      }, error: (err) => {
+        this.messageService.add({ severity: 'error', summary: 'تنبيه', detail: err.message });
+      }
+    })
+  }
+  onPageChange(event: any): void {
+    debugger
+    // Update the page number and page size dynamically
+    this.PageNumber = (event.first! / event.rows!) + 1; // Number of rows per page // event.first is the first index on the current page
+    this.PageSize = event.rows!; // event.rows is the number of rows per page
+    this.first = event.first!;
+    this.getAllSubCategory(); // Fetch data for the new page
+  }
+  applyFilter(event: Event) {
+    debugger
+    const input = event.target as HTMLInputElement;
+    const filterValue = input.value.trim().toLowerCase();
+    this.filteredServices = this.serviceList.filter(product =>
+      product.nameAr.toLowerCase().includes(filterValue)
+    );
+  }
+
+
 }

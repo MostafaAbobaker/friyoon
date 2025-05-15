@@ -83,7 +83,7 @@ export class AddSubCategoryComponent {
     formData.append('detailAr', this.formSubCategory.value.detailAr);
     formData.append('categoryId', this.formSubCategory.value.categoryId);
     formData.append('showHome', this.formSubCategory.value.showHome);
-    formData.append('videoUrl', this.formSubCategory.value.videoUrl);
+    //formData.append('videoUrl', this.formSubCategory.value.videoUrl);
     formData.append('id', '0');
     this.formSubCategory.value.LocationIds.forEach((id: string | Blob) => {
       formData.append('LocationIds', id);
@@ -96,17 +96,22 @@ export class AddSubCategoryComponent {
     this.formSubCategory.patchValue({ id: 0 });
     console.log(formData);
 
-    /* this._subCategoryService.addSubCategory(formData.values).subscribe({
+    this._subCategoryService.addSubCategory(formData).subscribe({
       next: (response) => {
         console.log(response);
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: response.message });
+        if (response.statusCode == 200) {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: response.message });
+        }
+        else {
+          this.messageService.add({ severity: 'error', summary: 'تنبيه', detail: response.message });
+        }
       },
       error: (err) => {
         console.log(err);
         this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
 
       },
-    }); */
+    }); 
   }
 
 

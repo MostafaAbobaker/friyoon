@@ -81,5 +81,7 @@ export class SubCategoryComponent implements OnInit{
     );
   }
 
-
+  getGovernorateNames(governorates: any[]): string {
+    return governorates?.map(g => g.nameAr).join(', ') || '';
+  }
 }

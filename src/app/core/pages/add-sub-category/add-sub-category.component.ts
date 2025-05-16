@@ -54,7 +54,7 @@ export class AddSubCategoryComponent {
     this.loadGovernorates();
   }
   loadCategories() {
-    this._mainServices.getMainServices().subscribe({
+    this._mainServices.getCategoryOptions().subscribe({
       next: (response) => {
         this.categories = response.data;
       },

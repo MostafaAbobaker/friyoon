@@ -64,7 +64,7 @@
                     <td [attr.data-label]="'الفئة الرئيسية'">
                       <div class="truncate-string-7">{{ category.category.nameAr }}</div>
                     </td>
-                    <td [attr.data-label]="'الاماكن'">{{ category.locationIds.length }}</td>
+                    <td [attr.data-label]="'الاماكن'">{{ getGovernorateNames(category.governorates)   }}</td>
                     <td class="text-center">
                       <div class="action d-flex gap-2 justify-content-center">
                         <a class="btn btn-outline-primary btn-sm " [routerLink]="['../edit-service', category.id]"><i

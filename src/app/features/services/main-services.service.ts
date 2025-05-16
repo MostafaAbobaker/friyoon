@@ -12,6 +12,9 @@ export class MainServicesService {
 
   getMainServices():Observable<any>{
     return this._http.get('Category/GetAllCategories');
+  }
+  getCategoryOptions(): Observable<any> {
+    return this._http.get('Category/CategoryOptions');
 
   }
   getMainServicesById(id:number):Observable<any>{

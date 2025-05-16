@@ -71,7 +71,7 @@ export class EditSubCategoryComponent {
     });
   }
   loadCategories() {
-    this._mainServices.getMainServices().subscribe({
+    this._mainServices.getCategoryOptions().subscribe({
       next: (response) => {
         console.log(response);
         this.categories = response.data;

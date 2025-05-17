@@ -13,14 +13,14 @@ import { ContactusComponent } from './core/pages/contactus/contactus.component';
 import { authGuard } from './core/guards/auth.guard';
 import { SubCategoryComponent } from './core/pages/sub-category/sub-category.component';
 import { AddSubCategoryComponent } from './core/pages/add-sub-category/add-sub-category.component';
-import { EditSubCategoryComponent } from './core/pages/edit-sub-category/edit-sub-category.component';  
+import { EditSubCategoryComponent } from './core/pages/edit-sub-category/edit-sub-category.component';
 
 export const routes: Routes = [
   {
     path: '', component: HomeLayoutComponent, children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
-      { path: 'our-service/:id', component: OurServiceComponent },
+      { path: 'our-service/:id',loadComponent: () => import('./features/pages/our-service/our-service.component').then(c => c.OurServiceComponent)    },
       { path: 'service-details', component: ServiceDetailsComponent },
       { path: 'governorates',canActivate: [authGuard], component: GovernoratesComponent },
       { path: 'main-category',canActivate: [authGuard], component: MainCategoryComponent },
@@ -28,8 +28,9 @@ export const routes: Routes = [
       { path: 'add-sub-category',canActivate: [authGuard], component: AddSubCategoryComponent },
       { path: 'contact-us',canActivate: [authGuard], component: ContactusComponent },
       { path: 'add-main-category',canActivate: [authGuard], component: AddMainCategoryComponent },
-      { path: 'edit-main-category/:id', canActivate: [authGuard], component: EditMainCategoryComponent },
-      { path: 'edit-service/:id', canActivate: [authGuard], component: EditSubCategoryComponent },
+      { path: 'edit-main-category/:id', canActivate: [authGuard], loadComponent: () => import('./core/pages/edit-main-category/edit-main-category.component').then(c => c.EditMainCategoryComponent)
+      },
+      { path: 'edit-service/:id', canActivate: [authGuard], loadComponent: () => import('./core/pages/edit-sub-category/edit-sub-category.component').then(c => c.EditSubCategoryComponent)}
 
     ]
   },

@@ -1,16 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ItemServiceComponent } from "../item-service/item-service.component";
+import { ActivatedRoute } from '@angular/router';
+import { MainServicesService } from '../../services/main-services.service';
+import { IServiceDetails } from '../../interface/iservice-details';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-our-service',
-  imports: [ItemServiceComponent],
+  imports: [ItemServiceComponent , CommonModule],
   templateUrl: './our-service.component.html',
   styleUrl: './our-service.component.scss'
 })
-export class OurServiceComponent {
+export class OurServiceComponent implements OnInit {
+  serviceUrl: number | null = null
+  nameMainServices:string=''
+  ourServices: IServiceDetails [] =[]
+  constructor(private _activatedRoute: ActivatedRoute , private _mainServices:MainServicesService) {
 
-
-  ourServices=[
+  }
+  ngOnInit(): void {
+    this._activatedRoute.paramMap.subscribe((params) => {
+      this.serviceUrl = Number(params.get('id'));
+      console.log(this.serviceUrl);
+    });
+    this.getMainServicesById();
+    this.getTitleService();
+  }
+  /* ourServices=[
     {
       title: 'شركة تنظيف منازل بالرياض',
       image: '../../../../assets/img/website/1.jpg',
@@ -51,7 +67,33 @@ export class OurServiceComponent {
       title: 'شركة تنظيف مساجد بالرياض',
       image: '../../../../assets/img/website/Pesticide-services.jpeg',
     }
-  ]
+  ] */
 
+  getMainServicesById() {
+    if(this.serviceUrl) {
 
+      this._mainServices.getMainServicesById(this.serviceUrl).subscribe({
+        next:(res)=>{
+          console.log(res);
+          this.ourServices = res
+        }, error:(err)=>{
+          console.log(err);
+
+        }
+      })
+    }
+  }
+  getTitleService() {
+    if(this.serviceUrl) {
+      this._mainServices.getMainServiceById(this.serviceUrl).subscribe({
+        next:(res)=>{
+          console.log(res);
+          this.nameMainServices = res.data.nameAr
+        }, error:(err)=> {
+          console.log(err);
+        }
+      })
+
+    }
+  }
 }

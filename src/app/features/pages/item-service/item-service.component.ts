@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { IServiceInfo } from '../../interface/iservice-details';
 
 @Component({
   selector: 'app-item-service',
@@ -8,7 +9,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './item-service.component.scss'
 })
 export class ItemServiceComponent {
-  @Input() item = {
-    title: '',
-    image: '',};
+  @Input() itemsService :IServiceInfo []  = []
 }

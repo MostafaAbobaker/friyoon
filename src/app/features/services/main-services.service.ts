@@ -13,12 +13,20 @@ export class MainServicesService {
   getMainServices():Observable<any>{
     return this._http.get('Category/GetAllCategories');
   }
+
+  getMainServiceById(id:number):Observable<any> {
+    return this._http.get(`Category/GetCategoryById/${id}`)
+  }
+
+
+
   getCategoryOptions(): Observable<any> {
     return this._http.get('Category/CategoryOptions');
 
   }
+
   getMainServicesById(id:number):Observable<any>{
-    return this._http.get(`Category/GetCategoryById/${id}`);
+    return this._http.get(`Service/GetGovernoratesWithServicesDetailsByCategory/${id}`);
 
   }
 

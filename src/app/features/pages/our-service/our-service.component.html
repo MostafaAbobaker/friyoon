@@ -1,84 +1,46 @@
 <section class="our-service">
   <div class="title-page mb-5">
-    <h2>خدمات التنظيف الشاملة
+    <h2>  {{nameMainServices}}
     </h2>
   </div>
-  <div class="content-service">
-    <div class="container">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active px-5" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">مكة</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link px-5" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">الرياض</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link px-5" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">جده</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link px-5" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" >الدمام</button>
-        </li>
-      </ul>
-      <div class="tab-content border-0" id="myTabContent">
-        <div class="tab-pane fade  py-5 show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-          <div class="container-fluid">
-            <div class="row g-3">
-              @for( item of ourServices; track item.title; let i = $index) {
+  @if(ourServices) {
+    <div class="content-service">
+      <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          @for(item of ourServices ; track item.governorateId) {
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active px-5" id="home-tab{{item.governorateId}}" data-bs-toggle="tab" attr.data-bs-target="#home-tab-pane{{item.governorateId}}" type="button" role="tab" attr.aria-controls="home-tab-pane{{item.governorateId}}" aria-selected="true">{{item.governorateNameAr}}</button>
+            </li>
 
-              <div class="col-lg-4" >
-                <app-item-service [item]="item" ></app-item-service>
-              </div>
-            }
+          }
+
+        </ul>
+        <div class="tab-content border-0" id="myTabContent">
+          @for(item of ourServices ; track item.governorateId ; let i = $index) {
+
+          <div class="tab-pane fade  py-5" [ngClass]="{ 'show active': i == 0 }"   id="home-tab-pane{{item.governorateId}}" role="tabpanel" attr.aria-labelledby="home-tab{{item.governorateId}}" tabindex="0">
+            <div class="container-fluid">
+
+
+                <app-item-service [itemsService]="item.services" ></app-item-service>
+
+
+
             </div>
           </div>
-        </div>
-        <div class="tab-pane fade py-5 " id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-
-          <!--  -->
-          <div class="container-fluid">
-            <div class="row g-3">
-              @for( item of ourServices; track item.title; let i = $index) {
-
-              <div class="col-lg-4" >
-                <app-item-service [item]="item" ></app-item-service>
-              </div>
-            }
-            </div>
-          </div>
-          <!--  -->
-        </div>
-        <div class="tab-pane fade py-5 " id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-
-          <!--  -->
-          <div class="container-fluid">
-            <div class="row g-3">
-              @for( item of ourServices; track item.title; let i = $index) {
-
-              <div class="col-lg-4" >
-                <app-item-service [item]="item" ></app-item-service>
-              </div>
-            }
-            </div>
-          </div>
-          <!--  -->
-        </div>
-        <div class="tab-pane fade py-5 " id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
-
-          <!--  -->
-          <div class="container-fluid">
-            <div class="row g-3">
-              @for( item of ourServices; track item.title; let i = $index) {
-
-              <div class="col-lg-4" >
-                <app-item-service [item]="item" ></app-item-service>
-              </div>
-            }
-            </div>
-          </div>
-          <!--  -->
+        }
         </div>
       </div>
     </div>
-  </div>
+
+  } @else {
+
+    <div class="no-data pb-5">
+      <div class="image text-center">
+        <img src="./assets/img/no-data.png" alt="" height="300px" width="300px" class="mx-auto">
+      </div>
+      <h4 class="text-center">لم يتم العثور على أي بيانات</h4>
+    </div>
+  }
 
 </section>

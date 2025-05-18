@@ -176,7 +176,7 @@ export class EditSubCategoryComponent {
       next: (response) => {
         if (response.statusCode == 200) {
           this.messageService.add({ severity: 'info', summary: 'تنبيه', detail: response.message });
-          this.getService(this.productId);
+          //this.getService(this.productId);
         }
         else {
           this.messageService.add({ severity: 'error', summary: 'تنبيه', detail: response.message });

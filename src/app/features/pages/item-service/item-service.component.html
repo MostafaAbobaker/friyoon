@@ -1,7 +1,7 @@
 <div class="row g-3">
 @for(item of itemsService ;track item.id) {
   <div class="col-lg-4">
-  <a class="card-service " routerLink="/service-details">
+  <a class="card-service " routerLink="/service-details/{{item.id}}">
     <img src="http://backend.fryon.net/{{item.images[0].imagePath}} " class="card-img-top" alt="..." >
       <p >
         {{item.nameAr}}

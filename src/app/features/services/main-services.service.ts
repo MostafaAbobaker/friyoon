@@ -25,7 +25,7 @@ export class MainServicesService {
 
   }
 
-  getMainServicesById(id:number):Observable<any>{
+  GetGovernoratesWithServicesDetailsByCategory(id:number):Observable<any>{
     return this._http.get(`Service/GetGovernoratesWithServicesDetailsByCategory/${id}`);
 
   }

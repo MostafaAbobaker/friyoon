@@ -53,7 +53,7 @@ this.getMainServicesById()
   }
 
   getMainServicesById( ) {
-    this._categoryService.getMainServicesById(this.categoryUrl).subscribe({
+    this._categoryService.getMainServiceById(this.categoryUrl).subscribe({
       next:(res)=>{
         console.log('get Main Services By Id',res.data);
         this.formCategory.patchValue(res.data)

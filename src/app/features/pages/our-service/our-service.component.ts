@@ -72,7 +72,7 @@ export class OurServiceComponent implements OnInit {
   getMainServicesById() {
     if(this.serviceUrl) {
 
-      this._mainServices.getMainServicesById(this.serviceUrl).subscribe({
+      this._mainServices.GetGovernoratesWithServicesDetailsByCategory(this.serviceUrl).subscribe({
         next:(res)=>{
           console.log(res);
           this.ourServices = res

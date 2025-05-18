@@ -3,13 +3,13 @@
     <h2>  {{nameMainServices}}
     </h2>
   </div>
-  @if(ourServices) {
+  @if(ourServices.length > 0) {
     <div class="content-service">
       <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
-          @for(item of ourServices ; track item.governorateId) {
+          @for(item of ourServices ; track item.governorateId; let j = $index) {
             <li class="nav-item" role="presentation">
-              <button class="nav-link active px-5" id="home-tab{{item.governorateId}}" data-bs-toggle="tab" attr.data-bs-target="#home-tab-pane{{item.governorateId}}" type="button" role="tab" attr.aria-controls="home-tab-pane{{item.governorateId}}" aria-selected="true">{{item.governorateNameAr}}</button>
+              <button class="nav-link  px-5"  [ngClass]="{ 'active': j == 0 }" id="home-tab{{item.governorateId}}" data-bs-toggle="tab" attr.data-bs-target="#home-tab-pane{{item.governorateId}}" type="button" role="tab" attr.aria-controls="home-tab-pane{{item.governorateId}}" aria-selected="true">{{item.governorateNameAr}}</button>
             </li>
 
           }

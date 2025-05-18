@@ -21,7 +21,8 @@ export const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'our-service/:id', component: OurServiceComponent },
-      { path: 'service-details/:id', component: ServiceDetailsComponent },
+      { path: 'our-service/:id', loadComponent: () => import('./features/pages/our-service/our-service.component').then(c => c.OurServiceComponent) },
+
       { path: 'governorates',canActivate: [authGuard], component: GovernoratesComponent },
       { path: 'main-category',canActivate: [authGuard], component: MainCategoryComponent },
       { path: 'sub-category',canActivate: [authGuard], component: SubCategoryComponent },

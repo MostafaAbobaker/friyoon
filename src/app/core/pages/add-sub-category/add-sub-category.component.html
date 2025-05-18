@@ -90,16 +90,20 @@
 
             <h3 class="fw-bold mb-5">صور الخدمة</h3>
 
+                  <div class="row">
+                    <div class="col-lg-3" *ngFor="let slide of  images">
 
-                  <a class="text-center" *ngFor="let slide of  images">
-                    <div class="image image-product">
-                      <img [src]="slide.previewUrl" [alt]="slide.id" class="w-100 h-100 object-fit-contain">
-                      <button class="delete-btn" type="button"
+                  <a class="text-center" >
+                    <div class="image image-product position-relative">
+                      <img [src]="slide.previewUrl" [alt]="slide.id" class="w-100 h-100 object-fit-contain border">
+                      <button class="btn delete-btn btn-danger btn-sm position-absolute top-0 start-0" type="button"
                         (click)="removeImage(slide.id); ">
                         <i class="fa-solid fa-trash"></i>
                       </button>
                     </div>
                   </a>
+                    </div>
+                  </div>
 
 
               </div>

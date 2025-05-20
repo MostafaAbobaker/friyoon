@@ -4,4 +4,5 @@ export interface IMainServices {
   imagePath: string,
   nameAr: string,
   id: number,
+  showNavBar:boolean
 }

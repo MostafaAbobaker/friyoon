@@ -36,9 +36,9 @@ export class ServiceDetailsComponent {
   }
   getService(id: string) {
     this._subCategoryService.getServiceById(id).subscribe({
-      next: (response) => {
-        this.service = response.data;
-        console.log(this.service);
+      next: (res) => {
+        this.service = res.data;
+        console.log('=>',this.service);
       },
       error: (err) => {
         console.log(err);

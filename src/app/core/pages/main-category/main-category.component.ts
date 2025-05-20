@@ -48,4 +48,33 @@ getAllServices() {
 
     })
   }
+
+
+
+  updateCategoryNavBar(category: any) {
+    const categoryObj = {
+      categoryId: category.id,
+      showNavBar: !category.showNavBar
+    };
+    this._mainServices.AddCategoryToNavBar(categoryObj).subscribe({
+      next: (response) => {
+        console.log(response);
+        if (response.statusCode == 200) {
+          this.getAllServices()
+          this.messageService.add({ severity: 'success', summary: 'تنبيه', detail: 'تم التعديل بنجاح   ' });
+        }
+        else {
+          this.messageService.add({ severity: 'error', summary: 'تنبيه', detail: response.message });
+        }
+
+      },
+      error: (err) => {
+        console.log(err);
+        this.messageService.add({ severity: 'error', summary: 'تنبيه', detail: err.message });
+
+      },
+   });
+
+
+  }
 }

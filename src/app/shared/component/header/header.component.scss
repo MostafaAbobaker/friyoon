@@ -1,0 +1,131 @@
+.button-fixed {
+  .social-media {
+  position: fixed;
+  bottom: 10%;
+  inset-inline-end: 2%;
+  z-index: 10020;
+  ul {
+    list-style-type: none;
+    transition: all 0.5s ease-in-out;
+    perspective: 600px;
+    li {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      transition: all .5s ease-in-out;
+      transform-style: preserve-3d;
+
+      a {
+        text-align: center;
+        display: block;
+        text-decoration: none;
+        position: absolute;
+        border-radius: 5px;
+        inset: 0;
+        transition: all .5s ease-in-out;
+        transform-style: preserve-3d;
+        display: grid;
+        place-items: center;
+        font-size: 28px;
+        i {
+          line-height: 50px;
+
+        }
+        &.front {
+          color:#fff;
+          z-index: 2;
+          backface-visibility: hidden;
+        }
+        &.back {
+          background-color:#fff;
+          z-index: 1;
+
+          transform: rotateX(180deg);
+        }
+
+      }
+      &:first-of-type {
+        a.front {
+          background-color: #0a6cff;
+        }
+        a.back {
+          color: #0a6cff;
+        }
+      }
+      &:nth-child(2) {
+        a.front {
+          background: #128c7e;
+        }
+        a.back {
+          color: #128c7e;
+        }
+      }
+      &:nth-child(3) {
+        a.front {
+          background-color: #1da1f2;
+        }
+        a.back {
+          color: #1da1f2;
+        }
+      }
+      &:nth-child(4) {
+        a.front {
+          background-color: #ff0000;
+        }
+        a.back {
+          color: #ff0000;
+        }
+      }
+      &:nth-child(5) {
+        a.front {
+          background-color: #1ab7ea;
+        }
+        a.back {
+          color: #1ab7ea;
+        }
+      }
+      &:nth-child(6) {
+        a.front {
+          background-color: #0077b5;
+        }
+        a.back {
+          color: #0077b5;
+        }
+      }
+      &:nth-child(7) {
+        a.front {
+          background-color: #1769ff;
+        }
+        a.back {
+          color: #1769ff;
+        }
+      }
+      &:nth-child(8) {
+        a.front {
+          background-color: #ea4c89;
+        }
+        a.back {
+          color: #ea4c89;
+        }
+      }
+      &:nth-child(9) {
+        a.front {
+          background-color: #bd081c;
+        }
+        a.back {
+          color: #bd081c;
+        }
+      }
+
+
+      &:hover {
+        transform: rotateX(180deg) scale(1.2);
+        box-shadow: 0 0 5px rgba(#000, 0.2);
+      }
+    }
+
+  }
+}
+}

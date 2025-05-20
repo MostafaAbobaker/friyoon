@@ -18,7 +18,9 @@ export class MainServicesService {
     return this._http.get(`Category/GetCategoryById/${id}`)
   }
 
-
+AddCategoryToNavBar(category: any): Observable<any> {
+    return this._http.put('Category/AddCategoryToNavBar',category);
+}
 
   getCategoryOptions(): Observable<any> {
     return this._http.get('Category/CategoryOptions');

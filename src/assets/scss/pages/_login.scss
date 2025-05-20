@@ -18,7 +18,9 @@
     padding:  40px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgb(var(--black-rgb-color) / 20%);;
-
+    @include mqMax(lg) {
+      width: 90%;
+    }
     .image {
       margin-bottom: 20px;
       img {

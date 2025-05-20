@@ -25,7 +25,6 @@
                   <img src="http://backend.fryon.net/{{item.iconPath}}" [alt]="item.nameAr  " class="img-fluid">
                 </div>
                 <svg class="svg-gray" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 368 57"> <g><path d="M0.5,57L184,0,368,57H0.5Z"></path></g> </svg>
-                  <input class="form-check-input position-absolute top-0 start-0 m-2 border-success" style="width: 25px;height: 25px;" type="checkbox" value="" id="checkDefault">
 
               </div>
               <div class="services-item-body">
@@ -33,6 +32,12 @@
                 <!-- <p>نقدم خدمات التنظيف الشاملة بأرخص الاسعار وفي أسرع وقت مع الضمان.
                 </p> -->
                 <p class="mb-4 line-clamp-4">{{item.descriptionAr}}</p>
+                <div class="form-check mb-3">
+                  <input class="form-check-input me-2" (change)="updateCategoryNavBar(item)" style="width: 25px;height: 25px;" type="checkbox" value="" id="checkDefault" [checked]="item.showNavBar" >
+                  <label class="form-check-label" for="checkDefault">
+                    إظهار الخدمة فى الشريط الرئيسى
+                  </label>
+                </div>
                 <div class="d-flex gap-3 ">
                   <a [routerLink]="['../edit-main-category/',item.id]" class="btn btn-outline-secondary d-block w-100">تعديل</a>
                   <button  class="btn btn-outline-danger d-block w-100" (click)="deleteCategory(item.id)">حذف</button>

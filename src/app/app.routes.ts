@@ -14,6 +14,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { SubCategoryComponent } from './core/pages/sub-category/sub-category.component';
 import { AddSubCategoryComponent } from './core/pages/add-sub-category/add-sub-category.component';
 import { EditSubCategoryComponent } from './core/pages/edit-sub-category/edit-sub-category.component';
+import { NotFound404Component } from './shared/component/not-found404/not-found404.component';
 
 export const routes: Routes = [
   {
@@ -30,8 +31,7 @@ export const routes: Routes = [
       { path: 'add-main-category',canActivate: [authGuard], component: AddMainCategoryComponent },
       { path: 'edit-main-category/:id', canActivate: [authGuard], loadComponent: () => import('./core/pages/edit-main-category/edit-main-category.component').then(c => c.EditMainCategoryComponent)
       },
-      { path: 'edit-service/:id', canActivate: [authGuard], loadComponent: () => import('./core/pages/edit-sub-category/edit-sub-category.component').then(c => c.EditSubCategoryComponent)}
-
+      { path: 'edit-service/:id', canActivate: [authGuard], loadComponent: () => import('./core/pages/edit-sub-category/edit-sub-category.component').then(c => c.EditSubCategoryComponent)},
     ]
   },
 
@@ -41,4 +41,6 @@ export const routes: Routes = [
 
 
   { path: 'login', component: LoginLayoutComponent },
+  {path:'**',component:NotFound404Component}
+
 ];

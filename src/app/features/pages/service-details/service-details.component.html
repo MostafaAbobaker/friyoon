@@ -1,111 +1,96 @@
 <section class="our-service service-details">
-  <div class="title-page mb-5" style="    background-image: linear-gradient(90deg,  rgb(var(--white-rgb-color)/ 70%) 100%),url(./assets/img/website/AirConditioningMaintenance.jpg);
-  ">
-    <h2>  
-
-      {{service.nameAr}}
+  <div class="title-page mb-5" style="background-image: linear-gradient(90deg,  rgb(var(--white-rgb-color)/ 70%) 100%),url(./assets/img/website/AirConditioningMaintenance.jpg);">
+    <h2>
+      @if(service.nameAr) {
+        {{service.nameAr}}
+      }
     </h2>
   </div>
-  <div class="service-details-content ">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 mb-5">
-          <div class="image image-start mb-4">
-            <img src="http://backend.fryon.net/{{service.images[0].imagePath}} " alt="">
-          </div>
+
+    <div class="service-details-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12" [innerHTML]="service.detailAr "></div>
         </div>
-        <div class="col-lg-6 mb-5">
-          <div class="title">
-            <h6>خـــدمـــة</h6>
-            <h4>
-              صيانة المكيفات بأفضل الإمكانيات الحديثة   بدقة العالية و متبعة
-            </h4>
-
-          </div>
-          <div class="content ps-5">
-
-            <p>تقدم خدمات تكييف الهواء من أفضل خدمات صيانة مكيفات الهواء التي يثق بها عملائنا. بغض النظر عن نوعها أو علامتها التجارية أو طرازها، نقدم خدمات صيانة مصممة لتحسين أداء أنظمة تكييف الهواء ومتانتها وعائد استثمارها.
-
-            </p>
-            <p>نحن نقدم مجموعة واسعة من خدمات صيانة التيار المتردد مثل -
-
-            </p>
-            <ul>
-              <li>خدمات صيانة تكييف الهواء التجارية،
-              </li>
-              <li>خدمات صيانة تكييف الهواء السكنية،
-              </li>
-              <li>خدمات صيانة تكييف الهواء، و
-              </li>
-              <li>خدمات صيانة مكيفات الهواء المنفصلة
-              </li>
-            </ul>
-          </div>
-        </div>
-
       </div>
     </div>
-    <div class="shift-content ">
-      <div class="container ">
+    <!-- <div class="service-details-content">
+      <div class="container">
         <div class="row">
-          <div class="col-lg-12 mb-5">
+          <div class="col-lg-6 mb-5">
+            <div class="image image-start mb-4">
+              <img src="http://backend.fryon.net/{{service.images[0].imagePath}}" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6 mb-5">
             <div class="title">
               <h6>خـــدمـــة</h6>
-              <h4 class="w-75">
-                 من يمكنه الاستفادة من أفضل خدمات صيانة مكيفات الهواء وإصلاحات مكيفات الهواء التي تقدمها شركة فريون؟            </h4>
-
+              <h4>
+                صيانة المكيفات بأفضل الإمكانيات الحديثة بدقة العالية و متبعة
+              </h4>
             </div>
             <div class="content ps-5">
-
-              <p>
-                    نقدم أفضل برامج صيانة وتنظيف مكيفات الهواء بالإضافة إلى إصلاحات مكيفات الهواء التي تقدمها شركة فريون لجميع أنواع وحدات تكييف الهواء المثبتة
-
-              </p>
-
+              <p>تقدم خدمات تكييف الهواء من أفضل خدمات صيانة مكيفات الهواء التي يثق بها عملائنا. بغض النظر عن نوعها أو علامتها التجارية أو طرازها، نقدم خدمات صيانة مصممة لتحسين أداء أنظمة تكييف الهواء ومتانتها وعائد استثمارها.</p>
+              <p>نحن نقدم مجموعة واسعة من خدمات صيانة التيار المتردد مثل -</p>
               <ul>
-                <li>المجمعات الصناعية،</li>
-                <li>المكاتب والمباني التجارية،</li>
-                <li>المباني السكنية الشاهقة،</li>
-                <li>مراكز التسوق،</li>
-                <li>الحانات والنوادي، وكذلك</li>
-                <li>متاجر التجزئة الصغيرة والمزيد.
-                </li>
+                <li>خدمات صيانة تكييف الهواء التجارية،</li>
+                <li>خدمات صيانة تكييف الهواء السكنية،</li>
+                <li>خدمات صيانة تكييف الهواء، و</li>
+                <li>خدمات صيانة مكيفات الهواء المنفصلة</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="container py-5">
-      <div class="row">
 
-        <div class="col-lg-6 mb-5">
-          <div class="title">
-            <h6>خـــدمـــة</h6>
-            <h4>
-              لماذا نحن؟
-            </h4>
-
-          </div>
-          <div class="content ps-5">
-
-            <p class="mb-4">أنظمة تكييف الهواء تُشبه أي جهاز كهروميكانيكي. لذا، من البديهي أنها تحتاج إلى عناية وصيانة وقائية دورية. إنها الطريقة الوحيدة للحفاظ على راحة منزلك أو مكان عملك مهما كان الموسم.
-
-            </p>
-            <p class="mb-4">لدينا فريق من الفنيين المعتمدين وذوي الخبرة تحت رواتبنا مما يسمح لنا بتقديم مساعدة لا تشوبها شائبة بعد البيع والدعم في الموقع لعملائنا، في بريسبان وما حولها.
-
-            </p>
-            <p> لمزيد من التفاصيل، لا تتردد في الاتصال بنا على  .
-              <a href="" class="dir-ltr">0558796867</a>
-            </p>
-          </div>
-        </div>
-        <div class="col-lg-6 mb-5">
-          <div class="image image-end mb-4">
-            <img src="./assets/img/website/Air-Conditioning-Maintenance-bottom2.jpg" alt="">
+      <div class="shift-content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 mb-5">
+              <div class="title">
+                <h6>خـــدمـــة</h6>
+                <h4 class="w-75">
+                  من يمكنه الاستفادة من أفضل خدمات صيانة مكيفات الهواء وإصلاحات مكيفات الهواء التي تقدمها شركة فريون؟
+                </h4>
+              </div>
+              <div class="content ps-5">
+                <p>
+                  نقدم أفضل برامج صيانة وتنظيف مكيفات الهواء بالإضافة إلى إصلاحات مكيفات الهواء التي تقدمها شركة فريون لجميع أنواع وحدات تكييف الهواء المثبتة
+                </p>
+                <ul>
+                  <li>المجمعات الصناعية،</li>
+                  <li>المكاتب والمباني التجارية،</li>
+                  <li>المباني السكنية الشاهقة،</li>
+                  <li>مراكز التسوق،</li>
+                  <li>الحانات والنوادي، وكذلك</li>
+                  <li>متاجر التجزئة الصغيرة والمزيد.</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  </section>
+
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-6 mb-5">
+            <div class="title">
+              <h6>خـــدمـــة</h6>
+              <h4>لماذا نحن؟</h4>
+            </div>
+            <div class="content ps-5">
+              <p class="mb-4">أنظمة تكييف الهواء تُشبه أي جهاز كهروميكانيكي. لذا، من البديهي أنها تحتاج إلى عناية وصيانة وقائية دورية. إنها الطريقة الوحيدة للحفاظ على راحة منزلك أو مكان عملك مهما كان الموسم.</p>
+              <p class="mb-4">لدينا فريق من الفنيين المعتمدين وذوي الخبرة تحت رواتبنا مما يسمح لنا بتقديم مساعدة لا تشوبها شائبة بعد البيع والدعم في الموقع لعملائنا، في بريسبان وما حولها.</p>
+              <p>لمزيد من التفاصيل، لا تتردد في الاتصال بنا على <a href="tel:0558796867" class="dir-ltr">0558796867</a></p>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-5">
+            <div class="image image-end mb-4">
+              <img src="./assets/img/website/Air-Conditioning-Maintenance-bottom2.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+</section>

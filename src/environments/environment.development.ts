@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://backend.fryon.net/api/',
-  imageurl: 'http://backend.fryon.net/',
+  apiUrl: 'https://backend.fryon.net/api/',
+  imageurl: 'https://backend.fryon.net/',
 };

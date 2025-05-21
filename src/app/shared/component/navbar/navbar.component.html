@@ -127,27 +127,23 @@
           >الرئيسية</a
         >
       </li>
-      <li  >
-        <a  (click)="toggleSubMenu('clean')"  routerLink="our-service" routerLinkActive="active"> خدمات التنظيف الشاملة</a>
-        <div class="sub-menu w-100" [class.show]="activeSubMenu === 'clean' && isCollapsed === false">
+      @for(navItem of ourServices;track navItem.id;) {
+      <li  (click)="getDetailsService(navItem.id, navItem.nameAr )">
+        <a   routerLinkActive="active"> {{navItem.nameAr}}</a>
+        <div class="sub-menu w-100" [class.show]="activeSubMenu === navItem.nameAr && isCollapsed === false">
           <div class="sub-content">
             <div class="container">
               <div class="row">
-                @for(item of city;track item) {
-                  <div class="col-lg-{{12/city.length}}">
+                @for(item of this.serviceDetails;track item) {
+                  <div class="col-lg-{{12/serviceDetails.length}}">
                     <div class="sub-content">
-                    <h6> شركات تنظيف ب{{item}}</h6>
+                    <h6> {{item.governorateNameAr}}</h6>
                     <ul >
-                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف منازل ب{{item}}</a></li>
-                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف خزانات ب{{item}}</a></li>
-                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف موكيت ب{{item}}</a></li>
-                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف ب{{item}} فلبينيين</a></li>
-                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف فلل ب{{item}}</a></li>
-                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف سجاد شرق {{item}}</a></li>
-                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف شبابيك ب{{item}}</a></li>
-                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف ارضيات ب{{item}}</a></li>
-                      <li><a   routerLink="our-service" routerLinkActive="active"> أرخص شركة تنظيف محلات ب{{item}}</a></li>
-                      <li><a   routerLink="our-service" routerLinkActive="active"> شركة تنظيف مساجد ب{{item}}</a></li>
+
+                      @for(serviceItem of item.services ; track serviceItem.id) {
+
+                      <li><a   routerLink="/service-details/{{serviceItem.id}}" routerLinkActive="active"> {{serviceItem.nameAr}}</a></li>
+                      }
                     </ul>
                   </div>
                 </div>
@@ -163,8 +159,8 @@
           </div>
         </div>
       </li>
-
-      <li   >
+    }
+      <!-- <li   >
         <a  (click)="toggleSubMenu('DrainCleaning')" routerLink="our-service" routerLinkActive="active">خدمات تسليك المجاري</a>
         <div class="sub-menu " [class.show]="activeSubMenu === 'DrainCleaning' && isCollapsed === false">
           <div class="sub-content">
@@ -211,7 +207,7 @@
 
       <li >
         <a   routerLink="our-service" routerLinkActive="active"><i class="fi fi-rr-search"></i></a>
-      </li>
+      </li> -->
     </ul>
   </aside>
   <div class="overlay" (click)="isShowSidebar = false"></div>

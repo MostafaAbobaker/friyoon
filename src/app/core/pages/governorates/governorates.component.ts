@@ -36,12 +36,10 @@ export class GovernoratesComponent implements OnInit {
   getAllGovernorates() {
     this._governoratesService.getAllGovernorates().subscribe({
       next: (res) => {
-        console.log(res);
         this.governoratesList = res.data;
 
       },
       error: (err) => {
-        console.log(err);
       }
     })
   }
@@ -51,24 +49,20 @@ export class GovernoratesComponent implements OnInit {
       if(this.formGovernorates.value.id == 0) {
         this._governoratesService.addGovernorates(this.formGovernorates.value).subscribe({
           next: (res) => {
-          console.log(res);
           this.getAllGovernorates();
           this.formGovernorates.reset();
         },
         error: (err) => {
-          console.log(err);
         }
         })
 
       } else {
          this._governoratesService.updataGovernorates(this.formGovernorates.value).subscribe({
           next: (res) => {
-          console.log(res);
           this.getAllGovernorates();
           this.formGovernorates.reset();
         },
         error: (err) => {
-          console.log(err);
         }
          })
       }
@@ -78,12 +72,10 @@ export class GovernoratesComponent implements OnInit {
   editGovernorates(id:number) {
     this._governoratesService.getGovernoratesById(id).subscribe({
       next: (res) => {
-        console.log(res);
         this.formGovernorates.patchValue(res.data);
         this.editModel= true
       },
       error: (err) => {
-        console.log(err);
       }
     })
   }
@@ -92,11 +84,9 @@ export class GovernoratesComponent implements OnInit {
   deleteGovernorates(id:number) {
     this._governoratesService.deleteGovernorates(id).subscribe({
       next: (res) => {
-        console.log(res);
         this.getAllGovernorates()
       },
       error: (err) => {
-        console.log(err);
 
       }
     })

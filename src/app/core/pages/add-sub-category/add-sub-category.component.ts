@@ -59,7 +59,6 @@ export class AddSubCategoryComponent {
         this.categories = response.data;
       },
       error: (err) => {
-        console.log(err);
       },
     });
   }
@@ -70,7 +69,6 @@ export class AddSubCategoryComponent {
         this.governorates = response.data;
       },
       error: (err) => {
-        console.log(err);
       },
     });
   }
@@ -94,11 +92,9 @@ export class AddSubCategoryComponent {
 
 
     this.formSubCategory.patchValue({ id: 0 });
-    console.log(formData);
 
     this._subCategoryService.addSubCategory(formData).subscribe({
       next: (response) => {
-        console.log(response);
         if (response.statusCode == 200) {
           this.messageService.add({ severity: 'success', summary: 'Success', detail: response.message });
         }
@@ -107,11 +103,10 @@ export class AddSubCategoryComponent {
         }
       },
       error: (err) => {
-        console.log(err);
         this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
 
       },
-    }); 
+    });
   }
 
 

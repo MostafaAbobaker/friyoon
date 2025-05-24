@@ -25,10 +25,8 @@ export class UploadComponent {
   }
 
   onFileChange(event: any): void {
-    console.log('event',event);
 
     const file = event.target.files[0];
-    console.log('file',file);
 
     if (file) {
       this.fileSelected.emit(file); // Emit the selected file to the parent

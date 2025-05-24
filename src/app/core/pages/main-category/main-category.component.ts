@@ -28,7 +28,6 @@ getAllServices() {
 
       },
       error: (err) => {
-        console.log(err.message);
 
       }
     });
@@ -37,7 +36,6 @@ getAllServices() {
     this._mainServices.deleteCategory(id).subscribe({
       next:(res)=>{
         this.messageService.add({ severity: 'success', summary: 'Success', detail: res });
-        console.log(res);
 
          this.getAllServices();
       },
@@ -58,7 +56,6 @@ getAllServices() {
     };
     this._mainServices.AddCategoryToNavBar(categoryObj).subscribe({
       next: (response) => {
-        console.log(response);
         if (response.statusCode == 200) {
           this.getAllServices()
           this.messageService.add({ severity: 'success', summary: 'تنبيه', detail: 'تم التعديل بنجاح   ' });
@@ -69,7 +66,6 @@ getAllServices() {
 
       },
       error: (err) => {
-        console.log(err);
         this.messageService.add({ severity: 'error', summary: 'تنبيه', detail: err.message });
 
       },

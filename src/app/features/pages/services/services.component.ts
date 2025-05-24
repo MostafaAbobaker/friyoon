@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MainServicesService } from '../../services/main-services.service';
 import { IMainServices } from '../../interface/i-main-services';
 import {  RouterModule } from '@angular/router';
@@ -10,8 +10,8 @@ import {  RouterModule } from '@angular/router';
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })
-export class ServicesComponent {
-
+export class ServicesComponent implements OnInit , OnDestroy {
+subscriptions :any;
   allService = 3;
   ourServices: IMainServices[] = []; // Initialize ourServices as an empty array
   /* ourServices = [
@@ -84,21 +84,24 @@ export class ServicesComponent {
   constructor(private _mainServices: MainServicesService ,
   ) {
   }
+
   ngOnInit() {
 
 
     this.getAllServices();
   }
   getAllServices() {
-    this._mainServices.getMainServices().subscribe({
+    this.subscriptions = this._mainServices.getMainServices().subscribe({
       next: (res) => {
         this.ourServices = res.data; // Cast the response to IContact[]
 
       },
       error: (err) => {
-        console.log(err.message);
 
       }
     });
+  }
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe(); // Unsubscribe to avoid memory leaks
   }
 }

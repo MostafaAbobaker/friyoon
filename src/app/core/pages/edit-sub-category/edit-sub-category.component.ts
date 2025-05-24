@@ -62,23 +62,18 @@ export class EditSubCategoryComponent {
   loadGovernorates() {
     this._governoratesService.getAllGovernorates().subscribe({
       next: (response) => {
-        console.log(response);
         this.governorates = response.data;
       },
       error: (err) => {
-        console.log(err);
       },
     });
   }
   loadCategories() {
     this._mainServices.getCategoryOptions().subscribe({
       next: (response) => {
-        console.log(response);
         this.categories = response.data;
-        console.log(response.data);
       },
       error: (err) => {
-        console.log(err);
       },
     });
   }
@@ -95,7 +90,6 @@ export class EditSubCategoryComponent {
         });
       },
       error: (err) => {
-        console.log(err);
       },
     });
 
@@ -147,7 +141,6 @@ export class EditSubCategoryComponent {
 
   onFileChange(event: any): void {
     debugger
-    console.log(event)
     const files = event.target.files;
     if (files) {
       // Iterate through the files and add them to the images array

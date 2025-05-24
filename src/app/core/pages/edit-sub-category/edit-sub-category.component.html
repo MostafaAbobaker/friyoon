@@ -95,27 +95,34 @@
                             <div class="categories-page py-5">
                                 <h3 class="fw-bold mb-5">صور الخدمة</h3>
 
-
-                                <a class="text-center" *ngFor="let slide of  images">
-                                    <div class="image image-product">
+                              <div class="row">
+                                <div class="col-lg-3" *ngFor="let slide of  images">
+                                  <a class="text-center" >
+                                    <div class="image image-product position-relative">
                                         <img [src]="slide.previewUrl" [alt]="slide.id"
                                             class="w-100 h-100 object-fit-contain">
-                                        <button class="delete-btn" type="button" (click)="removeImage(slide.id); ">
+                                        <button class="delete-btn  btn position-absolute m-2 top-0 start-0 btn-danger btn-sm" type="button" (click)="removeImage(slide.id); ">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </div>
                                 </a>
-
-                                <a class="text-center" *ngFor="let slide of  service.images">
-                                    <div class="image image-service">
+                                </div>
+                                <div class="col-lg-3" *ngFor="let slide of  service.images">
+<a class="text-center" >
+                                    <div class="image image-service position-relative">
                                         <img [src]="this.backendurl+slide.imagePath" [alt]="slide.id"
                                             class="w-100 h-100 object-fit-contain">
-                                        <button class="delete-btn" type="button"
+                                        <button class="delete-btn btn position-absolute m-2 top-0 start-0 btn-danger btn-sm" type="button"
                                             (click)="deleteImage(slide.id); $event.stopPropagation();">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </div>
                                 </a>
+                                </div>
+                              </div>
+
+
+
                             </div>
                         </div>
                     </div>

@@ -13,14 +13,17 @@
       <div class="col-md-3 mb-5">
         <h5>خدماتنا</h5>
         <ul class="list-unstyled services-list">
-          <li><a href="#" >خدمات التنظيف الشاملة</a></li>
-          <li><a href="#" >خدمات العزل</a></li>
+          @for(navItem of ourServices;track navItem.id;) {
+
+            <li><a routerLink="/our-service/{{navItem.id}}" >{{navItem.nameAr}}  </a></li>
+          }
+          <!-- <li><a href="#" >خدمات العزل</a></li>
           <li><a href="#" >خدمات المكيفات</a></li>
           <li><a href="#" >خدمات مكافحة الحشرات</a></li>
           <li><a href="#" >خدمات رش المبيدات</a></li>
           <li><a href="#" >خدمات تسليك المجاري</a></li>
           <li><a href="#" >خدمات كشف تسربات المياه</a></li>
-          <li><a href="#" >خدمات التركيب</a></li>
+          <li><a href="#" >خدمات التركيب</a></li> -->
         </ul>
 
       </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { SubCategoryService } from '../../services/sub-category.service';
@@ -11,7 +11,7 @@ import { MessageService } from 'primeng/api';
   styleUrl: './sub-category.component.scss',
   providers: [MessageService]
 })
-export class SubCategoryComponent implements OnInit{
+export class SubCategoryComponent implements OnInit , OnDestroy {
   serviceList!: ISubCategory[];
   subCategoryEmpty:ISubCategory[] = []
   filteredServices: ISubCategory[] = [];
@@ -22,7 +22,7 @@ export class SubCategoryComponent implements OnInit{
   loading = false;
   totalRecords: number = 0;
   porductDeleted:number = 0;
-
+  subTitleService:any
 
   constructor(
     private _subCategoryService: SubCategoryService,
@@ -30,18 +30,18 @@ export class SubCategoryComponent implements OnInit{
   ) {
 
   }
+
   ngOnInit(): void {
     this.getAllSubCategory()
   }
   getAllSubCategory() {
 
-    this._subCategoryService.getAllSubCategory(this.PageNumber,this.PageSize).subscribe({
+    this.subTitleService = this._subCategoryService.getAllSubCategory(this.PageNumber,this.PageSize).subscribe({
       next:(res)=>{
-        console.log(res);
         this.totalRecords = res.totalCount;
         this.serviceList = res.data;
         this.filteredServices = res.data;
-      } , error:(err)=>{console.log(err);
+      } , error:(err)=>{
       }
     })
   }
@@ -83,5 +83,8 @@ export class SubCategoryComponent implements OnInit{
 
   getGovernorateNames(governorates: any[]): string {
     return governorates?.map(g => g.nameAr).join(', ') || '';
+  }
+  ngOnDestroy(): void {
+    this.subTitleService.unsubscribe();
   }
 }

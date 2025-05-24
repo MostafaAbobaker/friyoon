@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ItemServiceComponent } from "../item-service/item-service.component";
 import { ActivatedRoute } from '@angular/router';
 import { MainServicesService } from '../../services/main-services.service';
@@ -11,17 +11,20 @@ import { CommonModule } from '@angular/common';
   templateUrl: './our-service.component.html',
   styleUrl: './our-service.component.scss'
 })
-export class OurServiceComponent implements OnInit {
+export class OurServiceComponent implements OnInit ,OnDestroy {
   serviceUrl: number | null = null
   nameMainServices:string=''
+    subscriptions: any;
+    titleServiceScriptions : any;
+
   ourServices: IServiceDetails [] =[]
   constructor(private _activatedRoute: ActivatedRoute , private _mainServices:MainServicesService) {
 
   }
+
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe((params) => {
       this.serviceUrl = Number(params.get('id'));
-      console.log(this.serviceUrl);
     });
     this.getMainServicesById();
     this.getTitleService();
@@ -72,12 +75,10 @@ export class OurServiceComponent implements OnInit {
   getMainServicesById() {
     if(this.serviceUrl) {
 
-      this._mainServices.GetGovernoratesWithServicesDetailsByCategory(this.serviceUrl).subscribe({
+      this.subscriptions = this._mainServices.GetGovernoratesWithServicesDetailsByCategory(this.serviceUrl).subscribe({
         next:(res)=>{
-          console.log(res);
           this.ourServices = res
         }, error:(err)=>{
-          console.log(err);
 
         }
       })
@@ -85,15 +86,17 @@ export class OurServiceComponent implements OnInit {
   }
   getTitleService() {
     if(this.serviceUrl) {
-      this._mainServices.getMainServiceById(this.serviceUrl).subscribe({
+      this.titleServiceScriptions = this._mainServices.getMainServiceById(this.serviceUrl).subscribe({
         next:(res)=>{
-          console.log(res);
           this.nameMainServices = res.data.nameAr
         }, error:(err)=> {
-          console.log(err);
         }
       })
 
     }
+  }
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe(); // Unsubscribe to avoid memory leaks
+    this.titleServiceScriptions.unsubscribe(); // Unsubscribe to avoid memory leaks
   }
 }

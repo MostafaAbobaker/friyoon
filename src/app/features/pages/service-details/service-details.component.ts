@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { EditorModule } from 'primeng/editor';
@@ -17,33 +17,39 @@ import { IServiceInfo } from '../../interface/iservice-details';
   styleUrl: './service-details.component.scss',
   providers: [MessageService]
 })
-export class ServiceDetailsComponent {
+export class ServiceDetailsComponent implements OnInit , OnDestroy {
   backendurl: string = environment.imageurl;
   serviceId!: string;
   service!: IServiceInfo;
+  subscriptions: any;
   constructor(
     private _subCategoryService: SubCategoryService,
     private route: ActivatedRoute, private messageService: MessageService,
   ) {
 
   }
+
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+
+    this.getUrlID()
+  }
+  getUrlID() {
+    this.subscriptions = this.route.params.subscribe(params => {
       this.serviceId = params['id'];  // Get 'id' from the URL
       this.getService(params['id']);
     });
-
   }
   getService(id: string) {
     this._subCategoryService.getServiceById(id).subscribe({
       next: (res) => {
         this.service = res.data;
-        console.log('=>',this.service);
       },
       error: (err) => {
-        console.log(err);
       },
     });
 
+  }
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe(); // Unsubscribe to avoid memory leaks
   }
 }

@@ -6,7 +6,7 @@
           <a routerLink="../admin" class="d-inline-block">الرئيسية</a>
         </li>
         <li class="breadcrumb-item">
-          <a routerLink="../../sub-category" class="d-inline-block">
+          <a routerLink="../sub-category" class="d-inline-block">
             الخدمات</a>
         </li>
         <li class="breadcrumb-item active" aria-current="page">إضافة خدمة</li>
@@ -18,7 +18,7 @@
         <button class="btn btn-outline-primary align-items-center d-flex" (click)="addSubCategory()">
           <i class="fi fi-rr-disk me-2"></i> حفظ
         </button>
-        <a routerLink="../../sub-category" class="btn btn-outline-secondary align-items-center d-flex"><i
+        <a routerLink="../sub-category" class="btn btn-outline-secondary align-items-center d-flex"><i
             class="fi fi-rr-arrow-left me-2"></i> رجوع
         </a>
       </div>
@@ -96,7 +96,7 @@
                   <a class="text-center" >
                     <div class="image image-product position-relative">
                       <img [src]="slide.previewUrl" [alt]="slide.id" class="w-100 h-100 object-fit-contain border">
-                      <button class="btn delete-btn btn-danger btn-sm position-absolute top-0 start-0" type="button"
+                      <button class="btn delete-btn btn-danger m-2 btn-sm position-absolute top-0 start-0" type="button"
                         (click)="removeImage(slide.id); ">
                         <i class="fa-solid fa-trash"></i>
                       </button>

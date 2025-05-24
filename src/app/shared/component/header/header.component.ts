@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { IContact } from '../../interface/icontact';
 import { ContactService } from '../../services/contact.service';
@@ -9,26 +9,26 @@ import { ContactService } from '../../services/contact.service';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
+  subscriptions :any;
   contactInfo :IContact = {} as IContact;
 
     constructor(private _contactService: ContactService) {
     }
+
     ngOnInit() {
       this.getContactInfo();
     }
     getContactInfo() {
-      this._contactService.getContact().subscribe({
+      this.subscriptions = this._contactService.getContact().subscribe({
         next: (res) => {
 
           if (res?.data) {
             this.contactInfo = res.data;
           } else {
-            console.error("Data is undefined or missing.");
           }
         },
         error: (err) => {
-          console.log(err.message);
 
         }
       });
@@ -60,5 +60,7 @@ export class HeaderComponent {
     }
 
   }
-
+ngOnDestroy(): void {
+    this.subscriptions.unsubscribe(); // Unsubscribe to avoid memory leaks
+  }
 }

@@ -1,41 +1,56 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ContactService } from '../../services/contact.service';
 import { IContact } from '../../interface/icontact';
+import { MainServicesService } from '../../../features/services/main-services.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit , OnDestroy {
+  subscriptions :any;
+  mainScriptions :any;
   contactInfo :IContact = {} as IContact;
+  ourServices: any;
 
   year: number = new Date().getFullYear(); // Get the current year
 
-  constructor(private _contactService: ContactService) {
+  constructor(private _contactService: ContactService, private _mainServices:MainServicesService) {
   }
+
   ngOnInit() {
     this.getContactInfo();
+    this.getAllServices();
   }
   getContactInfo() {
-    this._contactService.getContact().subscribe({
+    this.subscriptions = this._contactService.getContact().subscribe({
       next: (res) => {
         if (res?.data) {
           this.contactInfo = res.data;
         } else {
-          console.error("Data is undefined or missing.");
         }
 
       },
       error: (err) => {
-        console.log(err.message);
 
       }
     });
   }
 
+ getAllServices() {
+    this.mainScriptions = this._mainServices.getMainServices().subscribe({
+      next: (res) => {
+        this.ourServices = res.data.filter((item : any) => item.showNavBar); // result = words.filter((word) => word.length > 6);
 
+      },
+      error: (err) => {
+
+      }
+    });
+  }
   formatPhoneNumber(phone: string | undefined): string {
       // إزالة أي مسافات زائدة
       if (phone) {
@@ -61,6 +76,9 @@ export class FooterComponent {
     }
 
   }
-
+ngOnDestroy(): void {
+    this.subscriptions.unsubscribe(); // Unsubscribe to avoid memory leaks
+    this.mainScriptions.unsubscribe(); // Unsubscribe to avoid memory leaks
+  }
 
 }

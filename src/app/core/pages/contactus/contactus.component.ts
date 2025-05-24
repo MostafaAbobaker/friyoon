@@ -35,7 +35,6 @@ export class ContactusComponent implements OnInit {
   getContactInfo() {
     this._contactInfoService.getContactInfo().subscribe({
       next: (res) => {
-        console.log(res);
         this.formContactus.patchValue(res.data);
         // Disable form initially
         if (!this.editMode) {
@@ -43,7 +42,6 @@ export class ContactusComponent implements OnInit {
         }
       },
       error: (err) => {
-        console.log(err);
       }
     });
   }
@@ -62,14 +60,11 @@ export class ContactusComponent implements OnInit {
 
     this._contactInfoService.updataContactInfo(this.formContactus.value).subscribe({
       next: (res) => {
-        debugger
-        console.log('Update successful', res);
         this.editMode = false;
         this.formContactus.disable();
         // Optional: Show success message to user
       },
       error: (err) => {
-        console.error('Update failed', err);
         // Optional: Show error message to user
       }
     });

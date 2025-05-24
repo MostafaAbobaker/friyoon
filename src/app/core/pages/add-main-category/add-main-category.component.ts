@@ -63,7 +63,6 @@ export class AddMainCategoryComponent  {
 
             },
             error: (err) => {
-              console.log(err);
               this.messageService.add({ severity: 'error', summary: 'تنبيه', detail: err.message });
 
             },

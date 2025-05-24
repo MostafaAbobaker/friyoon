@@ -58,7 +58,8 @@ export class AddSubCategoryComponent {
       next: (response) => {
         this.categories = response.data;
       },
-      error: (err) => {
+      error: (err) => {        this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+
       },
     });
   }
@@ -69,6 +70,8 @@ export class AddSubCategoryComponent {
         this.governorates = response.data;
       },
       error: (err) => {
+                this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+
       },
     });
   }

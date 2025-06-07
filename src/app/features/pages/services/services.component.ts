@@ -3,6 +3,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MainServicesService } from '../../services/main-services.service';
 import { IMainServices } from '../../interface/i-main-services';
 import {  RouterModule } from '@angular/router';
+import { IContact } from '../../../shared/interface/icontact';
+import { ContactInfoService } from '../../../core/services/contact-info.service';
+import { ContactService } from '../../../shared/services/contact.service';
 
 @Component({
   selector: 'app-services',
@@ -13,6 +16,8 @@ import {  RouterModule } from '@angular/router';
 export class ServicesComponent implements OnInit , OnDestroy {
 subscriptions :any;
   allService = 3;
+  contactInfo :IContact = {} as IContact;
+
   ourServices: IMainServices[] = []; // Initialize ourServices as an empty array
   /* ourServices = [
     {
@@ -82,13 +87,28 @@ subscriptions :any;
   ] */
 
   constructor(private _mainServices: MainServicesService ,
+              private _contactService: ContactService
   ) {
   }
 
   ngOnInit() {
 
-
+    this.getContactInfo();
     this.getAllServices();
+  }
+  getContactInfo() {
+    this.subscriptions = this._contactService.getContact().subscribe({
+      next: (res) => {
+        if (res?.data) {
+          this.contactInfo = res.data;
+        } else {
+        }
+
+      },
+      error: (err) => {
+
+      }
+    });
   }
   getAllServices() {
     this.subscriptions = this._mainServices.getMainServices().subscribe({

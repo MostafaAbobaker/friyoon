@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Component, effect, inject } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
 import { LoaderService } from '../../services/loader.service';
 import { CommonModule } from '@angular/common';
 
@@ -10,8 +10,20 @@ import { CommonModule } from '@angular/common';
   styleUrl: './loader.component.scss'
 })
 export class LoaderComponent {
-  loaderService$ = inject(LoaderService);
+  /* loaderService$ = inject(LoaderService);
 
-  isLoading : Subject<boolean> = this.loaderService$.isLoading;
+  isLoading : Observable<boolean> = this.loaderService$.isLoading.asObservable();
 
+  ngAfterViewInit(): void {
+  } */
+
+
+  loaderService = inject(LoaderService);
+  loading = this.loaderService.loading;
+
+  /* constructor() {
+    effect(() => {
+      console.log('loading => ', this.loading());
+    });
+  } */
 }

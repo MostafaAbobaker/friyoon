@@ -1,6 +1,9 @@
-  <section class="loader-component" *ngIf="isLoading | async">
-    <i class="fa-solid fa-spinner fa-spin-pulse"></i>
-  </section>
+  @if(loading()) {
+    <section class="loader-component" >
+      <i class="fa-solid fa-spinner fa-spin-pulse"></i>
+    </section>
+
+  }
 
 
 

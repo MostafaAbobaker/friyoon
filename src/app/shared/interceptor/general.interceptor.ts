@@ -28,7 +28,8 @@ export const generalInterceptor: HttpInterceptorFn = (req, next) => {
     });
   } else {
     modifiedReq = req.clone({
-      url: `${baseUrl}${req.url}`
+      url: `${baseUrl}${req.url}`,
+
     });
   }
 

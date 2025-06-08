@@ -6,14 +6,15 @@ import {  RouterModule } from '@angular/router';
 import { IContact } from '../../../shared/interface/icontact';
 import { ContactInfoService } from '../../../core/services/contact-info.service';
 import { ContactService } from '../../../shared/services/contact.service';
-
+import { environment } from '../../../../environments/environment.development';
 @Component({
   selector: 'app-services',
   imports: [CommonModule, RouterModule],
   templateUrl: './services.component.html',
   styleUrl: './services.component.scss'
 })
-export class ServicesComponent implements OnInit , OnDestroy {
+export class ServicesComponent implements OnInit, OnDestroy {
+  backendurl: string = environment.imageurl;
 subscriptions :any;
   allService = 3;
   contactInfo :IContact = {} as IContact;
@@ -111,7 +112,7 @@ subscriptions :any;
     });
   }
   getAllServices() {
-    this.subscriptions = this._mainServices.getMainServices().subscribe({
+    this.subscriptions = this._mainServices.getCategoriesHaveServices().subscribe({
       next: (res) => {
         this.ourServices = res.data; // Cast the response to IContact[]
 

@@ -1,4 +1,5 @@
 <section class="services-component">
+  
   <div class="container">
     <h2 class="text-center fw-bold mb-3">نحن نقدم افضل خدمات التنظيف الشاملة    </h2>
     <p class="text-center w-75 mx-auto fs-5">
@@ -11,9 +12,9 @@
           <div class="col-lg-4 col-md-6 column">
             <div class="services-item">
               <div class="image">
-                <img src="http://backend.fryon.net/{{item.imagePath}}" [alt]="  item.nameAr" class="img-fluid">
+                <img src="{{backendurl + item.imagePath}}" [alt]="  item.nameAr" class="img-fluid">
                 <div class="icon">
-                  <img src="http://backend.fryon.net/{{item.iconPath}}" [alt]="item.nameAr  " class="img-fluid">
+                  <img src="{{backendurl + item.iconPath}}" [alt]="item.nameAr  " class="img-fluid">
                 </div>
                 <svg class="svg-gray" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 368 57"> <g><path d="M0.5,57L184,0,368,57H0.5Z"></path></g> </svg>
               </div>

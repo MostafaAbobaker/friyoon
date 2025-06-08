@@ -14,6 +14,13 @@ export class MainServicesService {
     return this._http.get('Category/GetAllCategories');
   }
 
+  getCategoriesHaveServices(): Observable<any> {
+    return this._http.get('Category/GetCategoriesHaveServices');
+  }
+  getNavCategories(): Observable<any> {
+    return this._http.get('Service/GetServicesGroupedByCategoryAndGovernorate');
+  }
+
   getMainServiceById(id:number):Observable<any> {
     return this._http.get(`Category/GetCategoryById/${id}`)
   }

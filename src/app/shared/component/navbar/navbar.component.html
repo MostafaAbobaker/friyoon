@@ -14,18 +14,18 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" routerLink="home" routerLinkActive="active">الرئيسية</a>
           </li>
-          @for(navItem of ourServices;track navItem.id;) {
-          <li class="nav-item" (click)="getDetailsService(navItem.id, navItem.nameAr)">
+          @for(navItem of ourServices;track navItem.categoryId;) {
+          <li class="nav-item" (click)="getDetailsService(navItem.categoryId, navItem.categoryName)">
             <a class="nav-link" routerLinkActive="active">
-              {{ navItem.nameAr }}
+              {{ navItem.categoryName }}
             </a>
             <div class="sub-menu w-100" [class.show]="
-                activeSubMenu === navItem.nameAr && isCollapsed === false
+                activeSubMenu === navItem.categoryName && isCollapsed === false
               ">
               <div class="sub-content">
                 <div class="container">
                   <div class="row">
-                    @for(item of this.serviceDetails;track item) {
+                    @for(item of navItem.governorates;track item.governorateId) {
                     <div class="col-lg-{{ 12 / this.serviceDetails.length }}">
                       <div class="sub-content">
                         <h6>{{ item.governorateNameAr }}</h6>

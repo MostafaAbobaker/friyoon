@@ -20,7 +20,7 @@ import { IServiceInfo } from '../../interface/iservice-details';
 export class ServiceDetailsComponent implements OnInit , OnDestroy {
   backendurl: string = environment.imageurl;
   serviceId!: string;
-  service!: IServiceInfo;
+  service!: IServiceInfo | undefined;
   subscriptions: any;
   constructor(
     private _subCategoryService: SubCategoryService,
@@ -40,7 +40,7 @@ export class ServiceDetailsComponent implements OnInit , OnDestroy {
     });
   }
   getService(id: string) {
-    this._subCategoryService.getServiceById(id).subscribe({
+    this._subCategoryService.getServiceDetails(id).subscribe({
       next: (res) => {
         this.service = res.data;
       },

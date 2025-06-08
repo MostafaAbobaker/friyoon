@@ -10,7 +10,7 @@ export class SubCategoryService {
   constructor(private _http:HttpClient) { }
 
   getAllSubCategory(limit:number, size:number): Observable<any> {
-    return this._http.get(`Service/GetAll?PageNumber=${limit}&PageSize=${size}`)
+    return this._http.get(`Service/GetServicesData?PageNumber=${limit}&PageSize=${size}`)
   }
   addSubCategory(form: any): Observable<any> {
     return this._http.post('Service/AddService', form);
@@ -20,6 +20,9 @@ export class SubCategoryService {
   }
   getServiceById(id: string): Observable<any> {
     return this._http.get(`Service/GetServiceById/${id}`)
+  }
+  getServiceDetails(id: string): Observable<any> {
+    return this._http.get(`Service/GetServiceDetails/${id}`)
   }
   updateService(service: any): Observable<any> {
     return this._http.put('Service/Update', service);

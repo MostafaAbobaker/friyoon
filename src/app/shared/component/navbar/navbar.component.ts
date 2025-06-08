@@ -29,10 +29,10 @@ export class NavbarComponent implements OnInit, OnDestroy{
     this.getAllServices();
   }
   getAllServices() {
-    this.subscriptions  = this._mainServices.getMainServices().subscribe({
+    this.subscriptions = this._mainServices.getNavCategories().subscribe({
       next: (res) => {
-        this.ourServices = res.data.filter((item : any) => item.showNavBar); // result = words.filter((word) => word.length > 6);
-
+        this.ourServices = res;  //res.data.filter((item : any) => item.showNavBar); // result = words.filter((word) => word.length > 6);
+        console.log(this.ourServices);
       },
       error: (err) => {
 
@@ -43,13 +43,13 @@ export class NavbarComponent implements OnInit, OnDestroy{
   getDetailsService(id:number , name :string) {
         this.activeSubMenu = this.activeSubMenu === name ? null : name; // Toggles submenu
 
-    this._mainServices.GetGovernoratesWithServicesDetailsByCategory(id).subscribe({
-        next:(res)=>{
-          this.serviceDetails = res
-        }, error:(err)=>{
+    // this._mainServices.GetGovernoratesWithServicesDetailsByCategory(id).subscribe({
+    //     next:(res)=>{
+    //       this.serviceDetails = res
+    //     }, error:(err)=>{
 
-        }
-      })
+    //     }
+    //   })
   }
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe(); // Unsubscribe to avoid memory leaks

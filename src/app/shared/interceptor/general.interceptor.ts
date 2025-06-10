@@ -29,10 +29,8 @@ export const generalInterceptor: HttpInterceptorFn = (req, next) => {
   } else {
     modifiedReq = req.clone({
       url: `${baseUrl}${req.url}`,
-
     });
   }
-
   return next(modifiedReq).pipe(
     finalize(() => LoaderService$.hide()),
   );

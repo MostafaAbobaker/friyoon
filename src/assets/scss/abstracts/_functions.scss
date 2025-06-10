@@ -194,6 +194,13 @@
           background-color: color-mix(in srgb, var(--#{$name}-color), black 5%);
           border-color: color-mix(in srgb, var(--#{$name}-color), black 5%);
         }
+        &:disabled {
+          color: var(--white-color);
+          pointer-events: none;
+          background-color: var(--#{$name}-color);;
+          border-color: var(--#{$name}-color);
+          opacity: .65;
+        }
       }
 
       .btn-outline-#{$name} {
@@ -206,6 +213,13 @@
           background-color: color-mix(in srgb, var(--#{$name}-color), black 5%);
           border-color: color-mix(in srgb, var(--#{$name}-color), black 5%);
           color: var(--white-color);
+        }
+        &:disabled {
+          color: var(--#{$name}-color);
+          pointer-events: none;
+          background-color: var(--white-color);;
+          border-color: var(--#{$name}-color);
+          opacity: .65;
         }
       }
     }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IServiceInfo } from '../../interface/iservice-details';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-item-service',
@@ -10,4 +11,5 @@ import { IServiceInfo } from '../../interface/iservice-details';
 })
 export class ItemServiceComponent {
   @Input() itemsService :IServiceInfo []  = []
+  imageURL=environment.imageURL
 }

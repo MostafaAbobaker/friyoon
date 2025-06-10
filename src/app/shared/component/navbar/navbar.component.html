@@ -1,5 +1,5 @@
 <div class="container">
-  <header class="nav-bar">
+  <header class="nav-bar position-relative">
     <div class="nav-content">
       <a class="logo-brand" href="#"><img src="assets/img/logo.png" alt="logo" />
         <h5 class="text-logo">Friyoon</h5>
@@ -15,23 +15,22 @@
             <a class="nav-link" aria-current="page" routerLink="home" routerLinkActive="active">الرئيسية</a>
           </li>
           @for(navItem of ourServices;track navItem.categoryId;) {
-          <li class="nav-item" (click)="getDetailsService(navItem.categoryId, navItem.categoryName)">
+          <li class="nav-item " (mouseenter)="getDetailsService(navItem.categoryId, navItem.categoryName)"  >
             <a class="nav-link" routerLinkActive="active">
               {{ navItem.categoryName }}
             </a>
-            <div class="sub-menu w-100" [class.show]="
+            <div class="sub-menu w-100" (mouseenter)="getDetailsService(navItem.categoryId, navItem.categoryName)" (mouseleave)="getDetailsService(0,'')" [class.show]="
                 activeSubMenu === navItem.categoryName && isCollapsed === false
               ">
               <div class="sub-content">
                 <div class="container">
                   <div class="row">
                     @for(item of navItem.governorates;track item.governorateId) {
-                    <div class="col-lg-{{ 12 / this.serviceDetails.length }}">
+                    <div class="col-lg-{{ 12 / navItem.governorates.length }}">
                       <div class="sub-content">
                         <h6>{{ item.governorateNameAr }}</h6>
                         <ul class="list-group list-group-flush">
-                          @for(serviceItem of item.services ; track
-                          serviceItem.id) {
+                          @for(serviceItem of item.services ; track serviceItem.id) {
 
                           <li>
                             <a class="list-group-item list-group-item-action"
@@ -113,16 +112,14 @@
       <li>
         <a aria-current="page" routerLink="home" routerLinkActive="active">الرئيسية</a>
       </li>
-      @for(navItem of ourServices;track navItem.id;) {
-      <li (click)="getDetailsService(navItem.id, navItem.nameAr)">
-        <a routerLinkActive="active"> {{ navItem.nameAr }}</a>
-        <div class="sub-menu w-100" [class.show]="
-            activeSubMenu === navItem.nameAr && isCollapsed === false
-          ">
+      @for(navItem of ourServices;track navItem.categoryId;) {
+      <li (click)="getDetailsService(navItem.categoryId, navItem.categoryName)" >
+        <a routerLinkActive="active"> {{ navItem.categoryName }}</a>
+        <div class="sub-menu w-100" [class.show]="  activeSubMenu === navItem.categoryName && isCollapsed === false ">
           <div class="sub-content">
             <div class="container">
               <div class="row">
-                @for(item of this.serviceDetails;track item) {
+                @for(item of navItem.governorates;track item.governorateId) {
                 <div class="col-lg-{{ 12 / serviceDetails.length }}">
                   <div class="sub-content">
                     <h6>{{ item.governorateNameAr }}</h6>

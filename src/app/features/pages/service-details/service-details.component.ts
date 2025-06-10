@@ -18,7 +18,7 @@ import { IServiceInfo } from '../../interface/iservice-details';
   providers: [MessageService]
 })
 export class ServiceDetailsComponent implements OnInit , OnDestroy {
-  backendurl: string = environment.imageurl;
+  backendurl: string = environment.apiUrl;
   serviceId!: string;
   service!: IServiceInfo | undefined;
   subscriptions: any;
@@ -30,7 +30,7 @@ export class ServiceDetailsComponent implements OnInit , OnDestroy {
   }
 
   ngOnInit(): void {
-
+    this.textReplace()
     this.getUrlID()
   }
   getUrlID() {
@@ -51,5 +51,11 @@ export class ServiceDetailsComponent implements OnInit , OnDestroy {
   }
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe(); // Unsubscribe to avoid memory leaks
+  }
+  textReplace() {
+
+    let x = this.service?.detailAr.replaceAll('&nbsp;',' ');
+    return x;
+
   }
 }

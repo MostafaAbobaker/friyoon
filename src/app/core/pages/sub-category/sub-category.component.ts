@@ -4,6 +4,7 @@ import { TableModule } from 'primeng/table';
 import { SubCategoryService } from '../../services/sub-category.service';
 import { ISubCategory } from '../../interface/isub-category';
 import { MessageService } from 'primeng/api';
+import { environment } from '../../../../environments/environment.development';
 @Component({
   selector: 'app-sub-category',
   imports: [RouterModule, TableModule],
@@ -15,7 +16,7 @@ export class SubCategoryComponent implements OnInit , OnDestroy {
   serviceList!: ISubCategory[];
   subCategoryEmpty:ISubCategory[] = []
   filteredServices: ISubCategory[] = [];
-
+  imageURL=environment.imageURL
   PageNumber = 0;
   PageSize = 5;
   first = 0;

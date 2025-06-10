@@ -17,7 +17,7 @@ export class OurServiceComponent implements OnInit ,OnDestroy {
     subscriptions: any;
     titleServiceScriptions : any;
 
-  ourServices: IServiceDetails [] =[]
+  ourServices: IServiceDetails [] = [] ;
   constructor(private _activatedRoute: ActivatedRoute , private _mainServices:MainServicesService) {
 
   }

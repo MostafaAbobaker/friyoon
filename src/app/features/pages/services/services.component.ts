@@ -14,7 +14,7 @@ import { environment } from '../../../../environments/environment.development';
   styleUrl: './services.component.scss'
 })
 export class ServicesComponent implements OnInit, OnDestroy {
-  backendurl: string = environment.imageurl;
+  backendurl: string = environment.imageURL;
 subscriptions :any;
   allService = 3;
   contactInfo :IContact = {} as IContact;

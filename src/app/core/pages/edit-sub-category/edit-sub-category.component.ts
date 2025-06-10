@@ -21,7 +21,7 @@ import { IService } from '../../../features/interface/iservice';
   providers: [MessageService]
 })
 export class EditSubCategoryComponent {
-  backendurl: string = environment.imageurl;
+  backendurl: string = environment.imageURL;
   text!: string;
   formService: FormGroup;
   imageP: any[] = [];
@@ -88,6 +88,8 @@ export class EditSubCategoryComponent {
         this.formService.patchValue({
           LocationIds: response.data.locationIds // e.g., Rome and Paris
         });
+    console.log('this service => ',this.service);
+
       },
       error: (err) => {
       },

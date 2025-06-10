@@ -4,6 +4,7 @@ import { MainServicesService } from '../../../features/services/main-services.se
 import { IMainServices } from '../../../features/interface/i-main-services';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { environment } from '../../../../environments/environment.development';
 
 @Component({
   selector: 'app-main-category',
@@ -14,7 +15,7 @@ import { MessageService } from 'primeng/api';
 
 })
 export class MainCategoryComponent implements OnInit{
-
+  imageURL=environment.imageURL
   ourServices: IMainServices[] = [];
   constructor(private _mainServices: MainServicesService, private messageService: MessageService ){}
   ngOnInit(): void {

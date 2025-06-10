@@ -160,26 +160,30 @@
                       </div>
                     </a>
                   </div> -->
-                  <div class="col-lg-3" *ngFor="let slide of service.images">
-                    <a class="text-center">
-                      <div class="image image-service position-relative">
-                        <img
-                          [src]="this.backendurl + slide.imagePath"
-                          [alt]="slide.id"
-                          class="w-100 h-100 object-fit-contain"
-                        />
-                        <button
-                          class="delete-btn btn position-absolute m-2 top-0 start-0 btn-danger btn-sm"
-                          type="button"
-                          (click)="
-                            deleteImage(slide.id); $event.stopPropagation()
-                          "
-                        >
-                          <i class="fa-solid fa-trash"></i>
-                        </button>
-                      </div>
-                    </a>
-                  </div>
+                 @for(slide of service.images; track slide.id) {
+                   <div class="col-lg-3" >
+                     <a class="text-center">
+                       <div class="image image-service position-relative">
+                         <img
+                           src="{{backendurl + slide.imagePath}}"
+                           [alt]="slide.id"
+                           class="w-100  object-fit-cover"
+                           style="height: 250px;"
+                         />
+                         <button
+                           class="delete-btn btn position-absolute m-2 top-0 start-0 btn-danger btn-sm"
+                           type="button"
+                           (click)="
+                             deleteImage(slide.id); $event.stopPropagation()
+                           "
+                         >
+                           <i class="fa-solid fa-trash"></i>
+                         </button>
+                       </div>
+                     </a>
+                   </div>
+
+                 }
                 </div>
               </div>
             </div>

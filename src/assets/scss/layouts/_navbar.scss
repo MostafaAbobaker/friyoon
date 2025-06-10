@@ -41,7 +41,7 @@ header.nav-bar {
     place-items: center;
     border-radius: $radius-pill;
     box-shadow: var(--box-shadow);
-    z-index: 10;
+    z-index: 999;
     img {
       width: 80%;
 
@@ -85,8 +85,12 @@ header.nav-bar {
         grid-template-rows: 0fr;
         transition: all 0.3s ease-in-out;
         z-index: 22;
+        box-shadow: 0 0 10px rgb(var(--black-rgb-color) / 5%);
         &:has(.container) {
           inset-inline-start: 0;
+          .container {
+            padding-inline-start: 60px;
+          }
         }
         // display: none;
         h6{

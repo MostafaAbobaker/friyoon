@@ -14,10 +14,8 @@ export const generalInterceptor: HttpInterceptorFn = (req, next) => {
 
   let modifiedReq: HttpRequest<unknown>;
 
-
-
-
   if (token) {
+    debugger
     modifiedReq = req.clone({
       url: `${baseUrl}${req.url}`,
       setHeaders: {

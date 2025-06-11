@@ -9,6 +9,7 @@ import { environment } from '../../../../environments/environment.development';
 import { MessageService } from 'primeng/api';
 import { SubCategoryService } from '../../../core/services/sub-category.service';
 import { IServiceInfo } from '../../interface/iservice-details';
+import { ScrollTopServiceService } from '../../../shared/services/scroll-top-service.service';
 
 @Component({
   selector: 'app-service-details',
@@ -25,13 +26,15 @@ export class ServiceDetailsComponent implements OnInit , OnDestroy {
   constructor(
     private _subCategoryService: SubCategoryService,
     private route: ActivatedRoute, private messageService: MessageService,
+    private _ScrollTopServiceService: ScrollTopServiceService
   ) {
 
   }
 
   ngOnInit(): void {
     this.textReplace()
-    this.getUrlID()
+    this.getUrlID();
+    this._ScrollTopServiceService.init();
   }
   getUrlID() {
     this.subscriptions = this.route.params.subscribe(params => {

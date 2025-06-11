@@ -15,7 +15,7 @@
         <form (ngSubmit)="addGovernorates()" [formGroup]="formGovernorates">
         <div class="input-group mb-3">
           <input type="text" class="form-control" formControlName="nameAr" name="nameAr" placeholder="إضف محافظة" >
-          <button class="btn btn-sm btn-outline-primary" id="basic-addon2"  *ngIf="!editModel"> إضافة</button>
+          <button class="btn btn-sm btn-outline-primary" id="basic-addon2"  *ngIf="!editModel" [disabled]="formGovernorates.invalid"> إضافة</button>
           <button class="btn btn-sm btn-outline-secondary" id="basic-addon2" *ngIf="editModel" > تعديل</button>
         </div>
         </form>
@@ -25,7 +25,7 @@
             <li class="list-group-item list-group-item-action d-flex align-items-center p-0" >
               <div class="text flex-grow-1 px-3">{{item.nameAr}}</div>
               <div class="action ">
-                <button class="btn btn-outline-primary btn-sm shadow-none rounded-0" (click)="editGovernorates(item.id)"><i class="fi fi-rr-pencil"></i></button>
+                <button class="btn btn-outline-primary btn-sm shadow-none rounded-0" (click)="editGovernorates(item.id)" ><i class="fi fi-rr-pencil"></i></button>
                 <button class="btn btn-outline-danger btn-sm shadow-none rounded-0" (click)="deleteGovernorates(item.id)"><i class="fi fi-rr-trash"></i></button>
               </div>
             </li>
@@ -36,3 +36,4 @@
     </div>
     </div>
     </section>
+<p-toast />

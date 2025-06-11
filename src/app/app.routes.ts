@@ -16,6 +16,7 @@ import { AddSubCategoryComponent } from './core/pages/add-sub-category/add-sub-c
 import { EditSubCategoryComponent } from './core/pages/edit-sub-category/edit-sub-category.component';
 import { NotFound404Component } from './shared/component/not-found404/not-found404.component';
 
+
 export const routes: Routes = [
   {
     path: '', component: HomeLayoutComponent, children: [
@@ -44,3 +45,5 @@ export const routes: Routes = [
   {path:'**',component:NotFound404Component}
 
 ];
+
+

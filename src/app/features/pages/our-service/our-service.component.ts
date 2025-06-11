@@ -18,7 +18,9 @@ export class OurServiceComponent implements OnInit ,OnDestroy {
     titleServiceScriptions : any;
 
   ourServices: IServiceDetails [] = [] ;
-  constructor(private _activatedRoute: ActivatedRoute , private _mainServices:MainServicesService) {
+  constructor(private _activatedRoute: ActivatedRoute , private _mainServices:MainServicesService,
+
+  ) {
 
   }
 
@@ -28,6 +30,7 @@ export class OurServiceComponent implements OnInit ,OnDestroy {
     });
     this.getMainServicesById();
     this.getTitleService();
+
   }
   /* ourServices=[
     {
@@ -78,6 +81,7 @@ export class OurServiceComponent implements OnInit ,OnDestroy {
       this.subscriptions = this._mainServices.GetGovernoratesWithServicesDetailsByCategory(this.serviceUrl).subscribe({
         next:(res)=>{
           this.ourServices = res
+
         }, error:(err)=>{
 
         }

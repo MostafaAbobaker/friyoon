@@ -56,8 +56,14 @@
                 </ng-template>
                 <ng-template #body let-category>
                   <tr>
-                    <td><img src="{{imageURL}}{{category.images[0].imagePath}}" alt="" width="100"
-                        height="100"></td>
+                    <td>
+                      @for(imageItem of category.images; track imageItem.id; let i =$index) {
+                        @if(i == 0 ) {
+                          <img src="{{imageURL + imageItem.imagePath}}" alt="" width="100"
+                            height="100">
+                        }
+                      }
+                      </td>
                     <td [attr.data-label]="'الفئة الفرعية'">
                       <div class="truncate">{{ category.nameAr }}</div>
                     </td>

@@ -33,15 +33,15 @@ export class SubCategoryComponent implements OnInit , OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getAllSubCategory()
+    /* this.getAllSubCategory() */
   }
   getAllSubCategory() {
-
     this.subTitleService = this._subCategoryService.getAllSubCategory(this.PageNumber,this.PageSize).subscribe({
       next:(res)=>{
         this.totalRecords = res.totalCount;
         this.serviceList = res.data;
         this.filteredServices = res.data;
+
       } , error:(err)=>{
       }
     })
@@ -50,7 +50,7 @@ export class SubCategoryComponent implements OnInit , OnDestroy {
     this.porductDeleted = id;
   }
   deleteService() {
-    debugger
+
     this._subCategoryService.deleteService(this.porductDeleted).subscribe({
       next: (response) => {
         if (response.statusCode == 200) {
@@ -66,7 +66,7 @@ export class SubCategoryComponent implements OnInit , OnDestroy {
     })
   }
   onPageChange(event: any): void {
-    debugger
+
     // Update the page number and page size dynamically
     this.PageNumber = (event.first! / event.rows!) + 1; // Number of rows per page // event.first is the first index on the current page
     this.PageSize = event.rows!; // event.rows is the number of rows per page
@@ -74,7 +74,7 @@ export class SubCategoryComponent implements OnInit , OnDestroy {
     this.getAllSubCategory(); // Fetch data for the new page
   }
   applyFilter(event: Event) {
-    debugger
+
     const input = event.target as HTMLInputElement;
     const filterValue = input.value.trim().toLowerCase();
     this.filteredServices = this.serviceList.filter(product =>

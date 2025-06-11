@@ -32,7 +32,6 @@ export class NavbarComponent implements OnInit, OnDestroy{
     this.subscriptions = this._mainServices.getNavCategories().subscribe({
       next: (res) => {
         this.ourServices = res;  //res.data.filter((item : any) => item.showNavBar); // result = words.filter((word) => word.length > 6);
-        console.log(this.ourServices);
       },
       error: (err) => {
 

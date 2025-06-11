@@ -27,7 +27,7 @@ export class EditSubCategoryComponent {
   imageP: any[] = [];
   images: any[] = [];  // to store the selected images
   categories!: ICategory[]
-  service!: IService;
+  service?: IService;
   productId!: string;
   governorates: IGovernorates[] = []
 
@@ -88,7 +88,6 @@ export class EditSubCategoryComponent {
         this.formService.patchValue({
           LocationIds: response.data.locationIds // e.g., Rome and Paris
         });
-    console.log('this service => ',this.service);
 
       },
       error: (err) => {
@@ -142,23 +141,38 @@ export class EditSubCategoryComponent {
   }
 
   onFileChange(event: any): void {
-    debugger
-    const files = event.target.files;
-    if (files) {
-      // Iterate through the files and add them to the images array
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
+    // debugger
+    // const files = event.target.files;
+    // if (files) {
+    //   // Iterate through the files and add them to the images array
+    //   for (let i = 0; i < files.length; i++) {
+    //     const file = files[i];
+    //     const reader = new FileReader();
+    //     reader.onload = () => {
+    //       this.images.push({
+    //         file: file,
+    //         previewUrl: reader.result,
+    //         id: this.generateGUID()
+    //       });
+    //       event.target.value = '';  // Clears selected file
+    //     };
+    //     reader.readAsDataURL(file);  // read the file to preview
+    //   }
+    // }
+
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      Array.from(input.files).forEach(file => {
         const reader = new FileReader();
-        reader.onload = () => {
+        reader.onload = (e: any) => {
           this.images.push({
-            file: file,
-            previewUrl: reader.result,
-            id: this.generateGUID()
+            id: Math.random().toString(36).substring(2),
+            file,
+            previewUrl: e.target.result
           });
-          event.target.value = '';  // Clears selected file
         };
-        reader.readAsDataURL(file);  // read the file to preview
-      }
+        reader.readAsDataURL(file);
+      });
     }
   }
 

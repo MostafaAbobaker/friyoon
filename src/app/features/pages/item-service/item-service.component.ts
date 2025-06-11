@@ -10,6 +10,6 @@ import { environment } from '../../../../environments/environment.development';
   styleUrl: './item-service.component.scss'
 })
 export class ItemServiceComponent {
-  @Input() itemsService :IServiceInfo []  = []
+  @Input() itemsService! :IServiceInfo []
   imageURL=environment.imageURL
 }

@@ -4,12 +4,16 @@ import { IGovernorates } from '../../interface/igovernorates';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-governorates',
-  imports: [ReactiveFormsModule , CommonModule , RouterModule],
+  imports: [ReactiveFormsModule , CommonModule , RouterModule,ToastModule],
   templateUrl: './governorates.component.html',
-  styleUrl: './governorates.component.scss'
+  styleUrl: './governorates.component.scss',
+  providers: [MessageService]
+
 })
 export class GovernoratesComponent implements OnInit {
   editModel:boolean =false;
@@ -21,7 +25,9 @@ export class GovernoratesComponent implements OnInit {
     nameAr: new FormControl(null, [Validators.required]),
   })
 
-  constructor(private _governoratesService: GovernoratesService) { }
+  constructor(private _governoratesService: GovernoratesService,
+    private messageService: MessageService
+  ) { }
   ngOnInit(): void {
     this.getAllGovernorates()
   }
@@ -39,20 +45,26 @@ export class GovernoratesComponent implements OnInit {
         this.governoratesList = res.data;
 
       },
-      error: (err) => {
+      error: (err) => {                this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+
       }
     })
   }
 
   addGovernorates() {
     if(this.formGovernorates.valid) {
-      if(this.formGovernorates.value.id == 0) {
+      if(this.formGovernorates.value.id == 0 || this.formGovernorates.value.id == null) {
+        this.formGovernorates.value.id = 0
         this._governoratesService.addGovernorates(this.formGovernorates.value).subscribe({
           next: (res) => {
           this.getAllGovernorates();
           this.formGovernorates.reset();
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+
         },
         error: (err) => {
+                          this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+
         }
         })
 
@@ -61,10 +73,15 @@ export class GovernoratesComponent implements OnInit {
           next: (res) => {
           this.getAllGovernorates();
           this.formGovernorates.reset();
+                    this.messageService.add({ severity: 'success', summary: 'Success', detail: res.message });
+
         },
         error: (err) => {
+                          this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+
         }
-         })
+
+        })
       }
     }
 
@@ -74,8 +91,11 @@ export class GovernoratesComponent implements OnInit {
       next: (res) => {
         this.formGovernorates.patchValue(res.data);
         this.editModel= true
+
       },
       error: (err) => {
+                        this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+
       }
     })
   }
@@ -84,9 +104,12 @@ export class GovernoratesComponent implements OnInit {
   deleteGovernorates(id:number) {
     this._governoratesService.deleteGovernorates(id).subscribe({
       next: (res) => {
-        this.getAllGovernorates()
+        this.getAllGovernorates();
+                this.messageService.add({ severity: 'info', summary: 'Info', detail: res.message });
+
       },
       error: (err) => {
+                this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
 
       }
     })

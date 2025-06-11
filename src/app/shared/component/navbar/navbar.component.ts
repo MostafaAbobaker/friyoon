@@ -3,6 +3,7 @@ import { RouterLink, RouterModule } from '@angular/router';
 import { MainServicesService } from '../../../features/services/main-services.service';
 import { IMainServices } from '../../../features/interface/i-main-services';
 import { IServiceDetails } from '../../../features/interface/iservice-details';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +19,10 @@ export class NavbarComponent implements OnInit, OnDestroy{
   isCollapsed: boolean = false; // Tracks the sidebar state
   serviceDetails:IServiceDetails[] = []
   ourServices: any;
-  constructor(private _mainServices:MainServicesService) {}
+  constructor(private _mainServices:MainServicesService,
+    private _categoryService:CategoryService
+
+  ) {}
 
   toggleSubMenu(subMenu: string): void {
     this.activeSubMenu = this.activeSubMenu === subMenu ? null : subMenu; // Toggles submenu

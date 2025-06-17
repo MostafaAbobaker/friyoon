@@ -56,9 +56,18 @@ export class ContactusComponent implements OnInit {
   }
 
   updataContactInfo() {
-
-
-    this._contactInfoService.updataContactInfo(this.formContactus.value).subscribe({
+    const formData = new FormData();
+    formData.append('id', this.formContactus.value.id);
+    formData.append('phone', this.formContactus.value.phone);
+    formData.append('whatsApp', this.formContactus.value.whatsApp);
+    formData.append('faceBookPage', this.formContactus.value.faceBookPage);
+    formData.append('aboutUs', this.formContactus.value.aboutUs);
+    formData.append('details', this.formContactus.value.details);
+    formData.append('address', this.formContactus.value.address);
+    formData.append('email', this.formContactus.value.email);
+    formData.append('instagramPage', this.formContactus.value.instagramPage);
+    formData.append('xPage', this.formContactus.value.xPage);
+    this._contactInfoService.updataContactInfo(formData).subscribe({
       next: (res) => {
         this.editMode = false;
         this.formContactus.disable();

@@ -14,7 +14,11 @@ export class ContactService {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
 
-  getContact(forceRefresh: boolean = false): Observable<any> {
+  getContact(): Observable<any> {
+    return this._http.get('ContactInfo/GetContactInfo');
+  }
+
+  getContact_sessionStorage(forceRefresh: boolean = false): Observable<any> {
     if (this.isBrowser) {
       const cachedData = sessionStorage.getItem(this.cacheContactInfo);
       if (cachedData && !forceRefresh) {

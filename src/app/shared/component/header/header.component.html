@@ -55,13 +55,13 @@
           </a>
         </div> -->
         <div class="col-lg-3 col-md-6 column">
-          <a class="item-contact" href="https://wa.me/{{contactInfo.phone}}">
+          <a class="item-contact" href="https://wa.me/{{contactInfo.whatsApp}}">
             <div class="icon">
               <i class="fi fi-brands-whatsapp"></i>
             </div>
             <div class="item-body-contant">
               <p class="dir-ltr text-end">
-                {{formatPhoneNumber(contactInfo.phone)}}
+                {{formatPhoneNumber(contactInfo.whatsApp)}}
                 </p>
               <p class=" detail">تواصل معنا بالوتس اب</p>
             </div>
@@ -101,7 +101,9 @@
 <div class="button-fixed">
   <div class="social-media">
   <ul>
-    <li title="Call"><a class="front" href="tel:{{contactInfo.phone}}"> <i class="fi fi-tr-phone-call sc"></i></a><a class="back" href="tel:{{contactInfo.phone}}"><i class="fi fi-tr-phone-call sc"></i></a></li>
-    <li title="Send Whatsapp"><a class="front" href="https://wa.me/{{contactInfo.phone}}"><i class="fi fi-brands-whatsapp"></i></a><a class="back" href="https://wa.me/{{contactInfo.phone}}"><i class="fi fi-brands-whatsapp"></i></a></li>
+    <li title="Call"><a class="front" href="tel:{{contactInfo.phone}}"> <i class="fi fi-tr-phone-call sc"></i></a>
+      <a class="back" href="tel:{{contactInfo.phone}}"><i class="fi fi-tr-phone-call sc"></i></a></li>
+    <li title="Send Whatsapp"><a class="front" href="https://wa.me/{{contactInfo.whatsApp}}"><i class="fi fi-brands-whatsapp"></i></a>
+      <a class="back" href="https://wa.me/{{contactInfo.whatsApp}}"><i class="fi fi-brands-whatsapp"></i></a></li>
     </ul>
 </div>

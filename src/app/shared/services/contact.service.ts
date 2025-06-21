@@ -1,19 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { Observable, of, tap } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
-  private readonly cacheContactInfo = 'ContactInfo';
-  private isBrowser: boolean;
 
-  constructor(private _http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
-    this.isBrowser = isPlatformBrowser(this.platformId);
+
+  constructor(private _http: HttpClient ){
+
   }
 
+<<<<<<< HEAD
   getContact(): Observable<any> {
     return this._http.get('ContactInfo/GetContactInfo');
   }
@@ -25,19 +24,13 @@ export class ContactService {
         return of(JSON.parse(cachedData));
       }
     }
+=======
+>>>>>>> EditHeader
 
-    return this._http.get('ContactInfo/GetContactInfo').pipe(
-      tap(data => {
-        if (this.isBrowser) {
-          sessionStorage.setItem(this.cacheContactInfo, JSON.stringify(data));
-        }
-      })
-    );
+
+  getContact(): Observable<any> {
+  return this._http.get('ContactInfo/GetContactInfo')
   }
 
-  clearContactInfoCache(): void {
-    if (this.isBrowser) {
-      sessionStorage.removeItem(this.cacheContactInfo);
-    }
-  }
+
 }

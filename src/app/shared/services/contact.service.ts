@@ -13,8 +13,7 @@ export class ContactService {
   constructor(private _http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
     this.isBrowser = isPlatformBrowser(this.platformId);
   }
-
-  getContact(): Observable<any> {
+    getContact(): Observable<any> {
     return this._http.get('ContactInfo/GetContactInfo');
   }
 
@@ -25,7 +24,6 @@ export class ContactService {
         return of(JSON.parse(cachedData));
       }
     }
-
     return this._http.get('ContactInfo/GetContactInfo').pipe(
       tap(data => {
         if (this.isBrowser) {

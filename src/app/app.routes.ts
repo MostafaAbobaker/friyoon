@@ -28,7 +28,7 @@ export const routes: Routes = [
       { path: 'main-category',canActivate: [authGuard], component: MainCategoryComponent },
       { path: 'sub-category',canActivate: [authGuard], component: SubCategoryComponent },
       { path: 'add-sub-category',canActivate: [authGuard], component: AddSubCategoryComponent },
-      { path: 'contact-us',canActivate: [authGuard], component: ContactusComponent },
+      { path: 'contact-us',canActivate: [authGuard], loadComponent: () => import('./core/pages/contactus/contactus.component').then(c => c.ContactusComponent)  },
       { path: 'add-main-category',canActivate: [authGuard], component: AddMainCategoryComponent },
       { path: 'edit-main-category/:id', canActivate: [authGuard], component:EditMainCategoryComponent      },
       { path: 'edit-service/:id', component:EditSubCategoryComponent},

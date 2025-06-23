@@ -94,23 +94,9 @@ subscriptions :any;
 
   ngOnInit() {
 
-    this.getContactInfo();
     this.getAllServices();
   }
-  getContactInfo() {
-    this.subscriptions = this._contactService.getContact().subscribe({
-      next: (res) => {
-        if (res?.data) {
-          this.contactInfo = res.data;
-        } else {
-        }
 
-      },
-      error: (err) => {
-
-      }
-    });
-  }
   getAllServices() {
     this.subscriptions = this._mainServices.getCategoriesHaveServices().subscribe({
       next: (res) => {

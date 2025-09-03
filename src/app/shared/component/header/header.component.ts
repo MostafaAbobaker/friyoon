@@ -20,8 +20,6 @@ export class HeaderComponent implements OnInit {
 
     ngOnInit() {
       this.getContactInfo();
-
-
     }
 
     getContactInfo() {
@@ -29,6 +27,7 @@ export class HeaderComponent implements OnInit {
         next: (res) => {
           if (res?.data) {
             this.contactInfo = res.data;
+
           } else {
           }
         },
